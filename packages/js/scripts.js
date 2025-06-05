@@ -115,8 +115,8 @@ document.addEventListener('DOMContentLoaded', () => {
         revealEmailButton.addEventListener('click', () => {
             if (emailText.style.display === 'none' || emailText.style.display === '') {
                 emailText.style.display = 'inline-block';
-                const user = "sajid.shaik1186";
-                const domain = "gmail.com";
+                const user = "user";
+                const domain = "domain.com";
                 emailText.textContent = `${user}@${domain}`;
                 revealEmailButton.innerHTML = "<i class='bx bx-check-circle'></i> Email:";
             } else {
