@@ -1,6 +1,7 @@
 @font-face {
   font-family: 'HelveticaNeueLT W1G 93 BlkEx';
-  src: url('../fonts/Logo_HV.otf') format('opentype');
+  src: url('../fonts/Logo_HV.woff2') format('woff2'),
+       url('../fonts/Logo_HV.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
