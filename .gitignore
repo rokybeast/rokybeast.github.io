@@ -1,0 +1,15 @@
+# This is a .gitignore file for my Website project
+
+.vscode
+/build
+
+*.log
+.env
+.cache
+*.tmp
+
+/coverage
+.DS_Store
+.idea
+
+/dist
