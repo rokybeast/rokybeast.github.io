@@ -366,7 +366,7 @@ h2 {
 
 .polygon-bg .triangle {
   position: absolute;
-  opacity: 1;
+  opacity: 0.5;
   transition: opacity 0.2s, filter 0.2s, border-bottom-color 0.3s;
   pointer-events: auto;
   width: 0;
@@ -375,6 +375,34 @@ h2 {
   border-right: 20px solid transparent;
   border-bottom: 35px solid var(--accent-color);
   will-change: transform;
+}
+
+/* Moving Circles */
+.circle-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  animation: move 5s infinite ease-in-out;
+}
+
+@keyframes move {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(200px, 200px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
 }
 
 /* --- My Tools Section --- */

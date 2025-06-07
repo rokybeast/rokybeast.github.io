@@ -1,4 +1,3 @@
-// Wrap all code in a DOMContentLoaded event listener to ensure the DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
   // --- Theme Switcher ---
   const themeToggleButton = document.getElementById("theme-toggle-icon");
@@ -53,6 +52,29 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+
+  const circleContainer = document.querySelector(".circle-container");
+  const numCircles = 50;
+
+  function createCircle() {
+    const circle = document.createElement("div");
+    circle.classList.add("circle");
+
+    const size = Math.random() * 50 + 20;
+    circle.style.width = `${size}px`;
+    circle.style.height = `${size}px`;
+
+    const x = Math.random() * window.innerWidth;
+    const y = Math.random() * window.innerHeight;
+    circle.style.left = `${x}px`;
+    circle.style.top = `${y}px`;
+
+    circleContainer.appendChild(circle);
+  }
+
+  for (let i = 0; i < numCircles; i++) {
+    createCircle();
+  }
 
   // Highlight active nav link on scroll
   window.addEventListener("scroll", () => {
@@ -129,63 +151,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // --- Welcome Section Interactive Background ---
-  const welcomeSection = document.getElementById("welcome");
-  if (welcomeSection) {
-    const polygonBg = welcomeSection.querySelector(".polygon-bg");
-    const numTriangles = 15;
-
-    for (let i = 0; i < numTriangles; i++) {
-      const triangle = document.createElement("div");
-      triangle.classList.add("triangle");
-      triangle.style.left = `${Math.random() * 100}%`;
-      triangle.style.top = `${Math.random() * 100}%`;
-      const scale = Math.random() * 0.5 + 0.5;
-      const rotation = Math.random() * 360;
-      triangle.style.transform = `rotate(${rotation}deg) scale(${scale})`;
-      triangle.dataset.originalTransform = triangle.style.transform; // Store original state
-      triangle.style.borderBottomColor =
-        Math.random() > 0.5
-          ? "var(--primary-color-light-400)"
-          : "var(--primary-color-light-600)";
-      polygonBg.appendChild(triangle);
-    }
-
-    const triangles = polygonBg.querySelectorAll(".triangle");
-    welcomeSection.addEventListener("mousemove", (e) => {
-      const rect = welcomeSection.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-
-      triangles.forEach((triangle) => {
-        const dx = x - (parseFloat(triangle.style.left) * rect.width) / 100;
-        const dy = y - (parseFloat(triangle.style.top) * rect.height) / 100;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-
-        const moveFactor = 200 / (dist + 1);
-        const angle = Math.atan2(dy, dx);
-
-        const maxMove = 25;
-        const moveX = Math.max(
-          -maxMove,
-          Math.min(maxMove, Math.cos(angle) * moveFactor)
-        );
-        const moveY = Math.max(
-          -maxMove,
-          Math.min(maxMove, Math.sin(angle) * moveFactor)
-        );
-
-        triangle.style.transform = `translate(${moveX}px, ${moveY}px) ${triangle.dataset.originalTransform}`;
-      });
-    });
-
-    welcomeSection.addEventListener("mouseleave", () => {
-      triangles.forEach((triangle) => {
-        triangle.style.transform = triangle.dataset.originalTransform;
-      });
-    });
-  }
-
   // --- "To Top" Button ---
   const toTopBtn = document.getElementById("to-top-btn");
   if (toTopBtn) {
@@ -200,60 +165,5 @@ document.addEventListener("DOMContentLoaded", () => {
     toTopBtn.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
-  }
-
-  // --- Physics-based Cursor Circle ---
-  const cursorCircle = document.querySelector(".cursor-circle");
-  if (cursorCircle) {
-    let mouse = { x: -100, y: -100 }; // Current mouse position
-    let circle = { x: -100, y: -100 }; // Current circle position
-    let lastScrollY = window.scrollY;
-    let isScrolling = false;
-    let scrollTimeout;
-
-    const speed = 0.1; // Lower is slower/smoother
-    let scaleX = 1;
-    let scaleY = 1;
-
-    // Update mouse position
-    window.addEventListener("mousemove", (e) => {
-      mouse.x = e.clientX;
-      mouse.y = e.clientY;
-    });
-
-    // Handle scrolling effect
-    window.addEventListener("scroll", () => {
-      isScrolling = true;
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(() => {
-        isScrolling = false;
-      }, 100);
-    });
-
-    const tick = () => {
-      // Interpolate circle position to mouse position for smoothness
-      circle.x += (mouse.x - circle.x) * speed;
-      circle.y += (mouse.y - circle.y) * speed;
-
-      // Calculate velocity
-      const deltaX = mouse.x - circle.x;
-      const deltaY = mouse.y - circle.y;
-      const velocity = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-
-      // Calculate scaling based on velocity and scrolling
-      const targetScaleX = 1 - Math.min(velocity / 60, 0.5); // Stretch horizontally when moving fast
-      const targetScaleY = isScrolling ? 0.6 : 1; // Squish vertically when scrolling
-
-      // Lerp scaling for smooth transitions
-      scaleX += (targetScaleX - scaleX) * speed;
-      scaleY += (targetScaleY - scaleY) * speed;
-
-      // Apply transform
-      cursorCircle.style.transform = `translate(${circle.x}px, ${circle.y}px) scale(${scaleX}, ${scaleY})`;
-
-      window.requestAnimationFrame(tick);
-    };
-
-    tick();
   }
 });
