@@ -377,6 +377,87 @@ h2 {
   will-change: transform;
 }
 
+/* --- Moving Circles --- */
+.floating-circles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+  overflow: hidden;
+}
+.floating-circles::before {
+  content: "";
+  position: absolute;
+  width: 300%;
+  height: 300%;
+  background: radial-gradient(
+      circle at 10% 10%,
+      var(--circle-color-1) 0%,
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 90% 90%,
+      var(--circle-color-2) 0%,
+      transparent 30%
+    );
+  animation: moveBg 30s linear infinite;
+}
+
+@keyframes moveBg {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-25%, -25%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+/* --- Dropdown Menu --- */
+.dropdown {
+  position: relative;
+}
+.dropdown .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--card-bg);
+  border-radius: var(--border-radius-medium);
+  box-shadow: 0 4px 6px var(--shadow-color);
+  min-width: 150px;
+  z-index: 999;
+}
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+.dropdown-menu li {
+  padding: 0;
+  margin: 0;
+}
+.dropdown-menu a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: background 0.3s;
+}
+.dropdown-menu a:hover {
+  background-color: var(--grid-color);
+}
+
+/* Fix z-index */
+.navbar,
+nav,
+.nav-links,
+.theme-switcher {
+  z-index: 1001;
+}
+
 /* --- My Tools Section --- */
 #my-tools {
   text-align: center;
