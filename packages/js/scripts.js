@@ -53,29 +53,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  const circleContainer = document.querySelector(".circle-container");
-  const numCircles = 50;
-
-  function createCircle() {
-    const circle = document.createElement("div");
-    circle.classList.add("circle");
-
-    const size = Math.random() * 50 + 20;
-    circle.style.width = `${size}px`;
-    circle.style.height = `${size}px`;
-
-    const x = Math.random() * window.innerWidth;
-    const y = Math.random() * window.innerHeight;
-    circle.style.left = `${x}px`;
-    circle.style.top = `${y}px`;
-
-    circleContainer.appendChild(circle);
-  }
-
-  for (let i = 0; i < numCircles; i++) {
-    createCircle();
-  }
-
   // Highlight active nav link on scroll
   window.addEventListener("scroll", () => {
     let current = "";
