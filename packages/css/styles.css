@@ -377,18 +377,17 @@ h2 {
   will-change: transform;
 }
 
-/* Align dropdown with the nav */
 .nav-links {
   list-style: none;
   display: flex;
   align-items: center;
-  justify-content: center; /* Optional: center the whole thing */
+  justify-content: center;
   gap: 0.75rem;
 }
 
-/* Fix dropdown alignment */
 .dropdown {
   position: relative;
+  list-style: none;
 }
 
 .dropdown > a {
@@ -396,8 +395,8 @@ h2 {
   padding: 0.5rem 1rem;
 }
 
-/* Dropdown menu */
 .dropdown-menu {
+  list-style: none;
   position: absolute;
   top: 100%;
   left: 0;
@@ -405,7 +404,6 @@ h2 {
   display: none;
   flex-direction: column;
   min-width: 150px;
-  border-radius: var(--border-radius-medium);
   box-shadow: 0 4px 6px var(--shadow-color);
   z-index: 9999;
 }
