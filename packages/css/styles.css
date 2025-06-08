@@ -385,7 +385,6 @@ h2 {
   justify-content: center;
   gap: 0.75rem;
 }
-
 /* --- My Tools Section --- */
 #my-tools {
   text-align: center;
@@ -756,11 +755,11 @@ body[data-theme="dark"] .dot {
   margin-top: 2rem;
 }
 
-.button-container {
+.contact-button-container {
   position: relative;
 }
 
-.button {
+.contact-button {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
@@ -779,7 +778,7 @@ body[data-theme="dark"] .dot {
   z-index: 1;
 }
 
-.button:hover {
+.contact-button:hover {
   background-color: var(--primary-color-dark-500);
   transform: translateY(-2px);
 }
@@ -798,10 +797,10 @@ body[data-theme="dark"] .dot {
     cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smooth spring-like effect */
 }
 
-.button-container:hover .button-shadow {
+.contact-button-container:hover .button-shadow {
   transform: translate(-2px, -2px);
 }
-.button-container:hover .button {
+.contact-button-container:hover .contact-button {
   transform: translate(2px, 2px);
 }
 
