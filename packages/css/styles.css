@@ -658,7 +658,7 @@ body[data-theme="dark"] #about-me {
   transition: background-color 0.3s ease;
 }
 body[data-theme="dark"] .dot {
-  background-color: var(--primary-color-dark-700);
+  background-color: var(--grey-300);
 }
 
 .active,
