@@ -248,7 +248,7 @@ body {
 
 .nav-links a.active {
   background-color: transparent;
-  color: var(--primary-color-light-300);
+  color: var(--grey-500);
   font-weight: 600;
 }
 
@@ -261,7 +261,7 @@ body[data-theme="light"] .nav-links a.active {
 }
 
 .nav-links a.active:hover {
-  color: var(--primary-color-light-400);
+  color: var(--grey-700);
 }
 
 .nav-links a:hover {
@@ -633,7 +633,6 @@ body[data-theme="dark"] #about-me {
 .prev:hover,
 .next:hover {
   background-color: rgba(0, 0, 0, 0.6);
-  color: var(--accent-color);
 }
 
 /* Dots for navigation */
@@ -764,7 +763,7 @@ body[data-theme="dark"] .dot {
 }
 
 .button:hover {
-  background-color: var(--grey-500);
+  background-color: var(--grey-700);
   transform: translateY(-2px);
 }
 
