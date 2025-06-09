@@ -436,7 +436,6 @@ h2 {
   filter: grayscale(0%);
   opacity: 1;
   transform: scale(1.1);
-  cursor: pointer;
 }
 
 /* Theme-specific logo visibility */
