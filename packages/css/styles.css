@@ -657,8 +657,13 @@ body[data-theme="dark"] #about-me {
   display: inline-block;
   transition: background-color 0.3s ease;
 }
+
 body[data-theme="dark"] .dot {
   background-color: var(--grey-300);
+}
+
+body[data-theme="light"] .dot {
+  background-color: var(--grey-800);
 }
 
 .active,
@@ -773,13 +778,13 @@ body[data-theme="dark"] .dot {
   z-index: 1;
 }
 
-.button:hover {
-  background-color: var(--grey-700);
+body[data-theme="dark"] .button:hover {
+  background-color: var(--grey-200);
   transform: translateY(-2px);
 }
 
 body[data-theme="dark"] .button:hover {
-  background-color: var(--grey-200);
+  background-color: var(--grey-700);
   transform: translateY(-2px);
 }
 
