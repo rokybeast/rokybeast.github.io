@@ -612,7 +612,7 @@ body[data-theme="dark"] #about-me {
   bottom: 8px;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  color: var(--text-color);
+  color: #fff;
   font-size: 0.9rem;
 }
 
