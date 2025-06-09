@@ -778,6 +778,11 @@ body[data-theme="dark"] .dot {
   transform: translateY(-2px);
 }
 
+body[data-theme="dark"] .button:hover {
+  background-color: var(--grey-200);
+  transform: translateY(-2px);
+}
+
 .button-shadow {
   content: "";
   position: absolute;
