@@ -21,59 +21,49 @@
   --border-radius-large: 16px;
   --border-radius-round: 50%;
 
-  --primary-color-light-50: #faf5ff;
-  --primary-color-light-100: #f3e8ff;
-  --primary-color-light-200: #e9d5ff;
-  --primary-color-light-300: #d8b4fe;
-  --primary-color-light-400: #c084fc;
-  --primary-color-light-500: #a855f7;
-  --primary-color-light-600: #9333ea;
-  --primary-color-light-700: #7e22ce;
-  --primary-color-light-800: #6b21a8;
-  --primary-color-light-900: #581c87;
-  --primary-color-light-950: #3b0764;
+  /* --- Grey Scale: Light Theme --- */
+  --grey-50: #f9f9f9;
+  --grey-100: #f0f0f0;
+  --grey-200: #dcdcdc;
+  --grey-300: #c0c0c0;
+  --grey-400: #a0a0a0;
+  --grey-500: #808080;
+  --grey-600: #606060;
+  --grey-700: #404040;
+  --grey-800: #2a2a2a;
+  --grey-900: #1a1a1a;
+  --grey-950: #0a0a0a;
 
-  --text-color-light: #1f2937;
-  --bg-color-light: var(--primary-color-light-50);
-  --navbar-bg-light: rgba(250, 245, 255, 0.8);
-  --card-bg-light: var(--primary-color-light-100);
-  --accent-color-light: var(--primary-color-light-500);
-  --grid-color-light: var(--primary-color-light-200);
-  --scrollbar-thumb-light: var(--primary-color-light-400);
-  --scrollbar-track-light: var(--primary-color-light-100);
+  --text-color-light: #1a1a1a;
+  --bg-color-light: var(--grey-50);
+  --navbar-bg-light: rgba(255, 255, 255, 0.85);
+  --card-bg-light: var(--grey-100);
+  --accent-color-light: var(--grey-700);
+  --grid-color-light: var(--grey-200);
+  --scrollbar-thumb-light: var(--grey-400);
+  --scrollbar-track-light: var(--grey-100);
   --selection-bg-light: #000;
   --selection-text-light: #fff;
-  --shadow-color-light: rgba(168, 85, 247, 0.3);
-  --button-shadow-color-light: var(--primary-color-light-300);
-  --circle-color-light-1: var(--primary-color-light-300);
-  --circle-color-light-2: var(--primary-color-light-400);
+  --shadow-color-light: rgba(0, 0, 0, 0.1);
+  --button-shadow-color-light: var(--grey-300);
+  --circle-color-light-1: var(--grey-300);
+  --circle-color-light-2: var(--grey-400);
 
-  --primary-color-dark-50: #3b0764;
-  --primary-color-dark-100: #581c87;
-  --primary-color-dark-200: #6b21a8;
-  --primary-color-dark-300: #7e22ce;
-  --primary-color-dark-400: #9333ea;
-  --primary-color-dark-500: #a855f7;
-  --primary-color-dark-600: #c084fc;
-  --primary-color-dark-700: #d8b4fe;
-  --primary-color-dark-800: #e9d5ff;
-  --primary-color-dark-900: #f3e8ff;
-  --primary-color-dark-950: #faf5ff;
-
-  --text-color-dark: var(--primary-color-dark-950);
-  --bg-color-dark: #11031c;
-  --navbar-bg-dark: rgba(59, 7, 100, 0.8);
-  --card-bg-dark: var(--primary-color-dark-100);
-  --accent-color-dark: var(--primary-color-dark-500);
-  --grid-color-dark: var(--primary-color-dark-200);
-  --scrollbar-thumb-dark: var(--primary-color-dark-600);
-  --scrollbar-track-dark: var(--primary-color-dark-100);
+  /* --- Grey Scale: Dark Theme --- */
+  --text-color-dark: var(--grey-50);
+  --bg-color-dark: #0a0a0a;
+  --navbar-bg-dark: rgba(20, 20, 20, 0.85);
+  --card-bg-dark: var(--grey-900);
+  --accent-color-dark: var(--grey-500);
+  --grid-color-dark: var(--grey-800);
+  --scrollbar-thumb-dark: var(--grey-700);
+  --scrollbar-track-dark: var(--grey-900);
   --selection-bg-dark: var(--text-color-dark);
   --selection-text-dark: var(--bg-color-dark);
-  --shadow-color-dark: rgba(168, 85, 247, 0.4);
-  --button-shadow-color-dark: var(--primary-color-dark-300);
-  --circle-color-dark-1: var(--primary-color-dark-300);
-  --circle-color-dark-2: var(--primary-color-dark-400);
+  --shadow-color-dark: rgba(0, 0, 0, 0.4);
+  --button-shadow-color-dark: var(--grey-800);
+  --circle-color-dark-1: var(--grey-800);
+  --circle-color-dark-2: var(--grey-700);
 
   /* Default to light theme */
   --text-color: var(--text-color-light);
@@ -200,7 +190,7 @@ body {
     var(--navbar-bg) 60%,
     rgba(255, 255, 255, 0.12) 100%
   );
-  box-shadow: 0 8px 32px 0 rgba(80, 0, 120, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(33, 33, 33, 0.18);
   border-bottom: 1.5px solid rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(32px) saturate(200%) brightness(1.15);
   -webkit-backdrop-filter: blur(32px) saturate(200%) brightness(1.15);
@@ -545,7 +535,7 @@ body[data-theme="dark"] .logo-light {
 }
 
 body[data-theme="dark"] #about-me {
-  background: rgba(59, 7, 100, 0.32);
+  background: rgba(14, 14, 15, 0.32);
   border: 1.5px solid rgba(255, 255, 255, 0.1);
 }
 
