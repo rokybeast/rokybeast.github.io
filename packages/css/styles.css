@@ -794,7 +794,7 @@ body[data-theme="dark"] .dot {
   border-radius: var(--border-radius-medium);
   z-index: 0;
   transition: transform var(--transition-speed-medium)
-    cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smooth spring-like effect */
+    cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .contact-button-container:hover .button-shadow {
@@ -872,17 +872,6 @@ body[data-theme="dark"] .dot {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
-}
-
-/* --- Circle Thingy */
-.cursor-circle {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 2px solid var(--theme-color);
-  pointer-events: none;
-  z-index: 1000;
 }
 
 /* --- Responsiveness --- */
