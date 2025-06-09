@@ -436,6 +436,17 @@ body[data-theme="dark"] .logo-light {
   display: none;
 }
 
+/* --- Projects Section --- */
+#projects {
+  text-align: center;
+}
+
+.project-card {
+  background-color: transparent;
+  border-radius: var(--border-radius-medium);
+  box-shadow: 0 8px 32px 0 var(--shadow-color);
+}
+
 @keyframes marquee-scroll {
   0% {
     transform: translateX(0);
@@ -840,6 +851,11 @@ body[data-theme="dark"] .dot {
 }
 .to-top-btn.show {
   display: flex;
+}
+
+body[data-theme="dark"] .to-top-btn {
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
 .show {
