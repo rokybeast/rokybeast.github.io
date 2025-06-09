@@ -3,6 +3,112 @@ document.addEventListener("DOMContentLoaded", () => {
   const themeToggleButton = document.getElementById("theme-toggle-icon");
   const body = document.body;
 
+  const toolData = [
+    {
+      name: "HTML",
+      srcLight: "https://cdn.simpleicons.org/html5/000",
+      srcDark: "https://cdn.simpleicons.org/html5/fff",
+    },
+    {
+      name: "CSS",
+      srcLight: "https://cdn.simpleicons.org/css/000",
+      srcDark: "https://cdn.simpleicons.org/css/fff",
+    },
+    {
+      name: "SCSS",
+      srcLight: "https://cdn.simpleicons.org/sass/000",
+      srcDark: "https://cdn.simpleicons.org/sass/fff",
+    },
+    {
+      name: "JavaScript",
+      srcLight: "https://cdn.simpleicons.org/javascript/000",
+      srcDark: "https://cdn.simpleicons.org/javascript/fff",
+    },
+    {
+      name: "VBA",
+      srcLight:
+        "https://api.iconify.design/simple-icons/visualbasic.svg?color=%23000",
+      srcDark:
+        "https://api.iconify.design/simple-icons/visualbasic.svg?color=%23fff",
+    },
+    {
+      name: "PowerPoint",
+      srcLight:
+        "https://api.iconify.design/mdi/microsoft-powerpoint.svg?color=%23000",
+      srcDark:
+        "https://api.iconify.design/mdi/microsoft-powerpoint.svg?color=%23fff",
+    },
+    {
+      name: "React",
+      srcLight: "https://cdn.simpleicons.org/react/000",
+      srcDark: "https://cdn.simpleicons.org/react/fff",
+    },
+    {
+      name: "Next.js",
+      srcLight: "https://cdn.simpleicons.org/nextdotjs/000",
+      srcDark: "https://cdn.simpleicons.org/nextdotjs/fff",
+    },
+    {
+      name: "Bootstrap",
+      srcLight: "https://cdn.simpleicons.org/bootstrap/000",
+      srcDark: "https://cdn.simpleicons.org/bootstrap/fff",
+    },
+    {
+      name: "Tailwind CSS",
+      srcLight: "https://cdn.simpleicons.org/tailwindcss/000",
+      srcDark: "https://cdn.simpleicons.org/tailwindcss/fff",
+    },
+    {
+      name: "MongoDB",
+      srcLight: "https://cdn.simpleicons.org/mongodb/000",
+      srcDark: "https://cdn.simpleicons.org/mongodb/fff",
+    },
+    {
+      name: "PHP",
+      srcLight: "https://cdn.simpleicons.org/php/000",
+      srcDark: "https://cdn.simpleicons.org/php/fff",
+    },
+    {
+      name: "Rust",
+      srcLight: "https://cdn.simpleicons.org/rust/000",
+      srcDark: "https://cdn.simpleicons.org/rust/fff",
+    },
+    {
+      name: "C++",
+      srcLight: "https://cdn.simpleicons.org/cplusplus/000",
+      srcDark: "https://cdn.simpleicons.org/cplusplus/fff",
+    },
+    {
+      name: "Bash",
+      srcLight: "https://cdn.simpleicons.org/gnubash/000",
+      srcDark: "https://cdn.simpleicons.org/gnubash/fff",
+    },
+    {
+      name: "Markdown",
+      srcLight: "https://cdn.simpleicons.org/markdown/000",
+      srcDark: "https://cdn.simpleicons.org/markdown/fff",
+    },
+  ];
+
+  function createToolLogos(theme) {
+    const marquee = document.querySelector(".marquee");
+    if (!marquee) return;
+
+    marquee.innerHTML = "";
+    const fragment = document.createDocumentFragment();
+
+    for (let j = 0; j < 2; j++) {
+      toolData.forEach((tool) => {
+        const img = document.createElement("img");
+        img.src = theme === "dark" ? tool.srcDark : tool.srcLight;
+        img.alt = tool.name;
+        img.classList.add("tool-logo");
+        fragment.appendChild(img);
+      });
+    }
+    marquee.appendChild(fragment);
+  }
+
   function applyTheme(theme) {
     body.setAttribute("data-theme", theme);
     localStorage.setItem("theme", theme);
@@ -13,19 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
       themeToggleButton.classList.remove("bx-moon");
       themeToggleButton.classList.add("bx-sun");
     }
-    updateToolLogosVisibility(theme);
-  }
-
-  function updateToolLogosVisibility(theme) {
-    const lightLogos = document.querySelectorAll(".tool-logo.logo-light");
-    const darkLogos = document.querySelectorAll(".tool-logo.logo-dark");
-    if (theme === "light") {
-      lightLogos.forEach((logo) => (logo.style.display = "inline-block"));
-      darkLogos.forEach((logo) => (logo.style.display = "none"));
-    } else {
-      lightLogos.forEach((logo) => (logo.style.display = "none"));
-      darkLogos.forEach((logo) => (logo.style.display = "inline-block"));
-    }
+    createToolLogos(theme);
   }
 
   themeToggleButton.addEventListener("click", () => {
@@ -34,7 +128,6 @@ document.addEventListener("DOMContentLoaded", () => {
     applyTheme(newTheme);
   });
 
-  // Apply saved theme on initial load
   const savedTheme = localStorage.getItem("theme") || "light";
   applyTheme(savedTheme);
 
@@ -53,7 +146,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Highlight active nav link on scroll
   window.addEventListener("scroll", () => {
     let current = "";
     sections.forEach((section) => {
@@ -90,7 +182,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function showSlides(n) {
     let slides = document.getElementsByClassName("slide");
     let dots = document.getElementsByClassName("dot");
-    if (slides.length === 0) return; // Exit if no slides
+    if (slides.length === 0) return;
 
     if (n > slides.length) slideIndex = 1;
     if (n < 1) slideIndex = slides.length;
@@ -107,25 +199,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const desc = document.getElementById("project-desc");
     if (desc) desc.textContent = projectDescriptions[slideIndex - 1];
-  }
-
-  // --- Email Reveal Button ---
-  const revealEmailButton = document.getElementById("reveal-email-button");
-  const emailText = document.getElementById("email-text");
-  if (revealEmailButton && emailText) {
-    revealEmailButton.addEventListener("click", () => {
-      const isHidden =
-        emailText.style.display === "none" || emailText.style.display === "";
-      if (isHidden) {
-        emailText.style.display = "inline-block";
-        emailText.textContent = "sajid.shaik1186@gmail.com";
-        revealEmailButton.innerHTML =
-          "<i class='bx bx-check-circle'></i> Email:";
-      } else {
-        emailText.style.display = "none";
-        revealEmailButton.innerHTML = "<i class='bx bx-envelope'></i> Email";
-      }
-    });
   }
 
   // --- "To Top" Button ---
