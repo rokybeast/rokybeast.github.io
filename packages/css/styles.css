@@ -41,8 +41,8 @@
   --grid-color-light: var(--primary-color-light-200);
   --scrollbar-thumb-light: var(--primary-color-light-400);
   --scrollbar-track-light: var(--primary-color-light-100);
-  --selection-bg-light: #000; /* Old var(--text-color-light) */
-  --selection-text-light: #fff; /* Old Var var(--bg-color-light) */
+  --selection-bg-light: #000;
+  --selection-text-light: #fff;
   --shadow-color-light: rgba(168, 85, 247, 0.3);
   --button-shadow-color-light: var(--primary-color-light-300);
   --circle-color-light-1: var(--primary-color-light-300);
@@ -241,7 +241,7 @@ body {
   z-index: 1;
 }
 
-/* .nav-links a::after {
+.nav-links a::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -250,13 +250,12 @@ body {
   height: 2px;
   background-color: var(--accent-color);
   transition: width var(--transition-speed-medium) ease;
-} */
+}
 
 .nav-links a::after {
   content: none;
 }
 
-/* If Wanted to Make it look cooler? */
 .nav-links a.active {
   background-color: transparent;
   color: var(--primary-color-light-300);
@@ -529,8 +528,6 @@ body[data-theme="dark"] .logo-light {
 }
 
 /* --- About Section --- */
-
-/* --- About Me Section & Triangles --- */
 #about-me {
   background: rgba(250, 245, 255, 0.35);
   border-radius: var(--border-radius-large);
@@ -558,7 +555,7 @@ body[data-theme="dark"] #about-me {
   margin: 0 auto;
   text-align: center;
   position: relative;
-  z-index: 5; /* Ensure content is above triangles */
+  z-index: 5;
 }
 
 .about-content,
@@ -586,6 +583,7 @@ body[data-theme="dark"] #about-me {
 #projects {
   background-color: var(--card-bg);
   transition: background-color var(--transition-speed-medium) ease;
+  text-align: center;
 }
 
 .slideshow-container {
@@ -678,6 +676,14 @@ body[data-theme="dark"] .dot {
   }
 }
 
+.project-buttons-container {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
 /* --- Roadmap Section --- */
 #roadmap {
   text-align: center;
@@ -740,26 +746,12 @@ body[data-theme="dark"] .dot {
   color: var(--text-color);
 }
 
-/* --- Contact Section --- */
-
-#contact {
-  text-align: center;
-  padding: 2.5rem 1rem 2rem;
-}
-
-.contact-methods {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 2rem;
-}
-
-.contact-button-container {
+/* --- Buttons --- */
+.button-container {
   position: relative;
 }
 
-.contact-button {
+.button {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
@@ -778,7 +770,7 @@ body[data-theme="dark"] .dot {
   z-index: 1;
 }
 
-.contact-button:hover {
+.button:hover {
   background-color: var(--primary-color-dark-500);
   transform: translateY(-2px);
 }
@@ -797,21 +789,11 @@ body[data-theme="dark"] .dot {
     cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.contact-button-container:hover .button-shadow {
+.button-container:hover .button-shadow {
   transform: translate(-2px, -2px);
 }
-.contact-button-container:hover .contact-button {
+.button-container:hover .button {
   transform: translate(2px, 2px);
-}
-
-#email-text {
-  margin-top: 1rem;
-  font-size: 1.1rem;
-  color: var(--accent-color);
-  background-color: var(--card-bg);
-  padding: 0.5rem 1rem;
-  border-radius: var(--border-radius-small);
-  display: inline-block;
 }
 
 /* --- Footer Section --- */
@@ -942,7 +924,7 @@ body[data-theme="dark"] .dot {
     width: 12px;
   }
 
-  .contact-button {
+  .button {
     padding: 0.7rem 1.5rem;
     font-size: 1rem;
   }
@@ -970,6 +952,12 @@ body[data-theme="dark"] .dot {
   .footer-links a {
     font-size: 1.8rem;
     margin: 0 0.5rem;
+  }
+
+  .project-buttons-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
   }
 }
 
