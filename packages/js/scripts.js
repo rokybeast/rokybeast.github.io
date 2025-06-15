@@ -252,6 +252,7 @@ async function fetchSpotifyNowPlaying() {
 
     const data = await response.json();
     if (!data.item) throw new Error("Nothing is playing");
+    console.log("Spotify API data:", data);
 
     const track = data.item;
     currentProgress = data.progress_ms;
