@@ -31,8 +31,8 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       name: "PowerPoint",
-      srcLight: "https://api.iconify.design/mdi/microsoft-powerpoint.svg",
-      srcDark: "https://api.iconify.design/mdi/microsoft-powerpoint.svg",
+      srcLight: "https://api.iconify.design/mdi/microsoft-powerpoint.svg%23D24726",
+      srcDark: "https://api.iconify.design/mdi/microsoft-powerpoint.svg%23D24726",
     },
     {
       name: "React",
@@ -104,13 +104,24 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     marquee.appendChild(fragment);
   }
-
+  
   function updateFavicon(theme) {
-    const favicon = document.getElementById("favicon");
-    if (!favicon) return;
+    const head = document.querySelector("head");
+    if (!head) return;
 
-    favicon.href = theme === "dark" ? "../../assets/favicon/favicon_dark.png" : "../../assets/favicon/favicon_light.png";
+    const existingFavicons = document.querySelectorAll("link[rel*='icon']");
+    existingFavicons.forEach(link => head.removeChild(link));
+
+    const newFavicon = document.createElement("link");
+    newFavicon.rel = "icon";
+    newFavicon.type = "image/png";
+
+    newFavicon.href = theme === "dark" 
+        ? "../../assets/favicon/favicon_dark.png" 
+        : "../../assets/favicon/favicon_light.png";
+    head.appendChild(newFavicon);
   }
+
 
   function applyTheme(theme) {
     body.setAttribute("data-theme", theme);
@@ -155,7 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let current = "";
     sections.forEach((section) => {
       const sectionTop = section.offsetTop;
-      if (pageYOffset >= sectionTop - 150) {
+      if (window.pageYOffset >= sectionTop - 150) {
         current = section.getAttribute("id");
       }
     });
