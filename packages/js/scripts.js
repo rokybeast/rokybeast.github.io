@@ -41,8 +41,8 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       name: "Next.js",
-      srcLight: "https://cdn.simpleicons.org/nextdotjs",
-      srcDark: "https://cdn.simpleicons.org/nextdotjs",
+      srcLight: "https://cdn.simpleicons.org/nextdotjs/000",
+      srcDark: "https://cdn.simpleicons.org/nextdotjs/fff",
     },
     {
       name: "Bootstrap",
@@ -66,8 +66,8 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       name: "Rust",
-      srcLight: "https://cdn.simpleicons.org/rust",
-      srcDark: "https://cdn.simpleicons.org/rust",
+      srcLight: "https://cdn.simpleicons.org/rust/F74C00",
+      srcDark: "https://cdn.simpleicons.org/rust/F74C00",
     },
     {
       name: "C++",
@@ -76,13 +76,13 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       name: "Bash",
-      srcLight: "https://cdn.simpleicons.org/gnubash",
-      srcDark: "https://cdn.simpleicons.org/gnubash",
+      srcLight: "https://cdn.simpleicons.org/gnubash/000",
+      srcDark: "https://cdn.simpleicons.org/gnubash/fff",
     },
     {
       name: "Markdown",
-      srcLight: "https://cdn.simpleicons.org/markdown",
-      srcDark: "https://cdn.simpleicons.org/markdown",
+      srcLight: "https://cdn.simpleicons.org/markdown/083fa1",
+      srcDark: "https://cdn.simpleicons.org/markdown/083fa1",
     },
   ];
 

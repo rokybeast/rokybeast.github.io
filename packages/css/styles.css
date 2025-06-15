@@ -483,16 +483,12 @@ h2 {
 .tool-logo {
   height: 50px;
   margin: 0 2rem;
-  filter: grayscale(50%);
-  opacity: 0.8;
   transition: filter var(--transition-speed-fast) ease,
     opacity var(--transition-speed-fast) ease,
     transform var(--transition-speed-fast) ease;
 }
 
 .tool-logo:hover {
-  filter: grayscale(0%);
-  opacity: 1;
   transform: scale(1.1);
 }
 
