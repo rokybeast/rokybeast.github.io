@@ -31,8 +31,8 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       name: "PowerPoint",
-      srcLight: "https://api.iconify.design/mdi/microsoft-powerpoint.svg%23D24726",
-      srcDark: "https://api.iconify.design/mdi/microsoft-powerpoint.svg%23D24726",
+      srcLight: "https://api.iconify.design/mdi/microsoft-powerpoint.svg?color=%23D24726",
+      srcDark: "https://api.iconify.design/mdi/microsoft-powerpoint.svg?color=%23D24726",
     },
     {
       name: "React",
@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     marquee.appendChild(fragment);
   }
-  
+
   function updateFavicon(theme) {
     const head = document.querySelector("head");
     if (!head) return;
