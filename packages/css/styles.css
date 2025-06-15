@@ -127,6 +127,10 @@ body {
   position: relative;
 }
 
+.item-link{
+  all: unset;
+}
+
 /* === Item Links === */
 .item-link {
   color: var(--text-color);
