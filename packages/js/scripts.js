@@ -234,6 +234,17 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 // --- Spotify Now Playing Widget ---
+let progressInterval;
+let currentProgress = 0;
+let durationMs = 0;
+
+function formatTime(ms) {
+  const totalSeconds = Math.floor(ms / 1000);
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  return `${minutes}:${seconds.toString().padStart(2, "0")}`;
+}
+
 async function fetchSpotifyNowPlaying() {
   try {
     const response = await fetch("https://spotify-npp.onrender.com/nowplaying");
@@ -260,6 +271,7 @@ async function fetchSpotifyNowPlaying() {
       `${formatTime(currentProgress)} / ${formatTime(durationMs)}`;
 
     clearInterval(progressInterval);
+
     progressInterval = setInterval(() => {
       currentProgress += 1000;
 
@@ -268,18 +280,19 @@ async function fetchSpotifyNowPlaying() {
         fetchSpotifyNowPlaying();
         return;
       }
+
       const updatedPercent = (currentProgress / durationMs) * 100;
       document.getElementById("spotify-progress-bar").style.width = `${updatedPercent}%`;
       document.getElementById("spotify-time-display").textContent =
         `${formatTime(currentProgress)} / ${formatTime(durationMs)}`;
     }, 1000);
+
   } catch (err) {
     document.getElementById("spotify-track-name").textContent = "Nothing Playing";
     document.getElementById("spotify-artist-name").textContent = "Spotify idle...";
     document.getElementById("spotify-album-art").style.backgroundImage = "none";
     document.getElementById("spotify-progress-bar").style.width = "0%";
     document.getElementById("spotify-time-display").textContent = "0:00 / 0:00";
-
     clearInterval(progressInterval);
   }
 }
