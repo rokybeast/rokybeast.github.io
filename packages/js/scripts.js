@@ -233,18 +233,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // --- Spotify Now Playing Widget ---
-let progressInterval;
-let currentProgress = 0;
-let durationMs = 0;
-
-function formatTime(ms) {
-  const totalSeconds = Math.floor(ms / 1000);
-  const minutes = Math.floor(totalSeconds / 60);
-  const seconds = totalSeconds % 60;
-  return `${minutes}:${seconds.toString().padStart(2, "0")}`;
-}
-
+// --- Spotify Now Playing Widget ---
 async function fetchSpotifyNowPlaying() {
   try {
     const response = await fetch("https://spotify-npp.onrender.com/nowplaying");
@@ -261,50 +250,43 @@ async function fetchSpotifyNowPlaying() {
     const artistName = track.artists.map(a => a.name).join(", ");
     const albumArt = track.album.images[0].url;
 
-    // Set content
     document.getElementById("spotify-track-name").textContent = trackName;
     document.getElementById("spotify-artist-name").textContent = artistName;
     document.getElementById("spotify-album-art").style.backgroundImage = `url(${albumArt})`;
 
-    // Set initial bar + time
+    document.getElementById("spotify-waveform").classList.add("active");
+
     const percent = (currentProgress / durationMs) * 100;
     document.getElementById("spotify-progress-bar").style.width = `${percent}%`;
     document.getElementById("spotify-time-display").textContent =
       `${formatTime(currentProgress)} / ${formatTime(durationMs)}`;
 
-    // Clear existing interval
     clearInterval(progressInterval);
-
-    // Animate progress locally
     progressInterval = setInterval(() => {
       currentProgress += 1000;
 
       if (currentProgress >= durationMs) {
         clearInterval(progressInterval);
-        fetchSpotifyNowPlaying(); // Trigger refresh immediately
+        fetchSpotifyNowPlaying();
         return;
       }
-
       const updatedPercent = (currentProgress / durationMs) * 100;
       document.getElementById("spotify-progress-bar").style.width = `${updatedPercent}%`;
       document.getElementById("spotify-time-display").textContent =
         `${formatTime(currentProgress)} / ${formatTime(durationMs)}`;
     }, 1000);
-
   } catch (err) {
-    // Error or not playing
     document.getElementById("spotify-track-name").textContent = "Nothing Playing";
     document.getElementById("spotify-artist-name").textContent = "Spotify idle...";
     document.getElementById("spotify-album-art").style.backgroundImage = "none";
     document.getElementById("spotify-progress-bar").style.width = "0%";
     document.getElementById("spotify-time-display").textContent = "0:00 / 0:00";
+    document.getElementById("spotify-waveform").classList.remove("active");
+
     clearInterval(progressInterval);
   }
 }
 
-// Initial call
 fetchSpotifyNowPlaying();
-
-// Resync every 60 seconds
 setInterval(fetchSpotifyNowPlaying, 60000);
 });
