@@ -3,92 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const themeToggleButton = document.getElementById("theme-toggle-icon");
   const body = document.body;
 
-  const toolData = [
-    {
-      name: "HTML",
-      srcLight: "https://cdn.simpleicons.org/html5/000",
-      srcDark: "https://cdn.simpleicons.org/html5/fff",
-    },
-    {
-      name: "CSS",
-      srcLight: "https://cdn.simpleicons.org/css/000",
-      srcDark: "https://cdn.simpleicons.org/css/fff",
-    },
-    {
-      name: "SCSS",
-      srcLight: "https://cdn.simpleicons.org/sass/000",
-      srcDark: "https://cdn.simpleicons.org/sass/fff",
-    },
-    {
-      name: "JavaScript",
-      srcLight: "https://cdn.simpleicons.org/javascript/000",
-      srcDark: "https://cdn.simpleicons.org/javascript/fff",
-    },
-    {
-      name: "VBA",
-      srcLight:
-        "https://api.iconify.design/simple-icons/visualbasic.svg?color=%23000",
-      srcDark:
-        "https://api.iconify.design/simple-icons/visualbasic.svg?color=%23fff",
-    },
-    {
-      name: "PowerPoint",
-      srcLight:
-        "https://api.iconify.design/mdi/microsoft-powerpoint.svg?color=%23000",
-      srcDark:
-        "https://api.iconify.design/mdi/microsoft-powerpoint.svg?color=%23fff",
-    },
-    {
-      name: "React",
-      srcLight: "https://cdn.simpleicons.org/react/000",
-      srcDark: "https://cdn.simpleicons.org/react/fff",
-    },
-    {
-      name: "Next.js",
-      srcLight: "https://cdn.simpleicons.org/nextdotjs/000",
-      srcDark: "https://cdn.simpleicons.org/nextdotjs/fff",
-    },
-    {
-      name: "Bootstrap",
-      srcLight: "https://cdn.simpleicons.org/bootstrap/000",
-      srcDark: "https://cdn.simpleicons.org/bootstrap/fff",
-    },
-    {
-      name: "Tailwind CSS",
-      srcLight: "https://cdn.simpleicons.org/tailwindcss/000",
-      srcDark: "https://cdn.simpleicons.org/tailwindcss/fff",
-    },
-    {
-      name: "MongoDB",
-      srcLight: "https://cdn.simpleicons.org/mongodb/000",
-      srcDark: "https://cdn.simpleicons.org/mongodb/fff",
-    },
-    {
-      name: "PHP",
-      srcLight: "https://cdn.simpleicons.org/php/000",
-      srcDark: "https://cdn.simpleicons.org/php/fff",
-    },
-    {
-      name: "Rust",
-      srcLight: "https://cdn.simpleicons.org/rust/000",
-      srcDark: "https://cdn.simpleicons.org/rust/fff",
-    },
-    {
-      name: "C++",
-      srcLight: "https://cdn.simpleicons.org/cplusplus/000",
-      srcDark: "https://cdn.simpleicons.org/cplusplus/fff",
-    },
-    {
-      name: "Bash",
-      srcLight: "https://cdn.simpleicons.org/gnubash/000",
-      srcDark: "https://cdn.simpleicons.org/gnubash/fff",
-    },
-    {
-      name: "Markdown",
-      srcLight: "https://cdn.simpleicons.org/markdown/000",
-      srcDark: "https://cdn.simpleicons.org/markdown/fff",
-    },
-  ];
+  const toolData = [/* ... your tool list ... */];
 
   function createToolLogos(theme) {
     const marquee = document.querySelector(".marquee");
@@ -109,9 +24,17 @@ document.addEventListener("DOMContentLoaded", () => {
     marquee.appendChild(fragment);
   }
 
+  function updateFavicon(theme) {
+    const favicon = document.getElementById("favicon");
+    if (!favicon) return;
+
+    favicon.href = theme === "dark" ? "../../assets/favicon/favicon_dark.png" : "../../assets/favicon/favicon_light.png";
+  }
+
   function applyTheme(theme) {
     body.setAttribute("data-theme", theme);
     localStorage.setItem("theme", theme);
+    
     if (theme === "dark") {
       themeToggleButton.classList.remove("bx-sun");
       themeToggleButton.classList.add("bx-moon");
@@ -119,12 +42,13 @@ document.addEventListener("DOMContentLoaded", () => {
       themeToggleButton.classList.remove("bx-moon");
       themeToggleButton.classList.add("bx-sun");
     }
+
     createToolLogos(theme);
+    updateFavicon(theme);
   }
 
   themeToggleButton.addEventListener("click", () => {
-    let newTheme =
-      body.getAttribute("data-theme") === "light" ? "dark" : "light";
+    let newTheme = body.getAttribute("data-theme") === "light" ? "dark" : "light";
     applyTheme(newTheme);
   });
 
