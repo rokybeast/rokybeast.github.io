@@ -482,6 +482,7 @@ h2 {
 
 .tool-logo {
   filter: grayscale(100%);
+  opacity: 0.5;
   height: 50px;
   margin: 0 2rem;
   transition: filter var(--transition-speed-fast) ease,
@@ -490,6 +491,7 @@ h2 {
 }
 
 .tool-logo:hover {
+  opacity: 1;
   filter: grayscale(0%);
   transform: scale(1.1);
 }
