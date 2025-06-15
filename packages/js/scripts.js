@@ -254,8 +254,6 @@ async function fetchSpotifyNowPlaying() {
     document.getElementById("spotify-artist-name").textContent = artistName;
     document.getElementById("spotify-album-art").style.backgroundImage = `url(${albumArt})`;
 
-    document.getElementById("spotify-waveform").classList.add("active");
-
     const percent = (currentProgress / durationMs) * 100;
     document.getElementById("spotify-progress-bar").style.width = `${percent}%`;
     document.getElementById("spotify-time-display").textContent =
@@ -281,7 +279,6 @@ async function fetchSpotifyNowPlaying() {
     document.getElementById("spotify-album-art").style.backgroundImage = "none";
     document.getElementById("spotify-progress-bar").style.width = "0%";
     document.getElementById("spotify-time-display").textContent = "0:00 / 0:00";
-    document.getElementById("spotify-waveform").classList.remove("active");
 
     clearInterval(progressInterval);
   }
