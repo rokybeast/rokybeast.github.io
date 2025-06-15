@@ -475,6 +475,29 @@ body[data-theme="dark"] .spotify-now-playing {
   opacity: 0.8;
 }
 
+.spotify-progress-container {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 0.4rem;
+}
+
+#spotify-progress-bar {
+  height: 100%;
+  width: 0%;
+  background-color: var(--accent-color, limegreen); /* fallback */
+  transition: width 0.4s ease;
+}
+
+.spotify-time-display {
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  opacity: 0.6;
+  font-family: var(--font-default);
+  color: var(--text-color);
+}
+
 /* === My Tools Section === */
 #my-tools {
   text-align: center;

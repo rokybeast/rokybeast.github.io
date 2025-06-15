@@ -234,29 +234,77 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // --- Spotify Now Playing Widget ---
-  async function fetchSpotifyNowPlaying() {
-    try {
-      const response = await fetch("https://spotify-npp.onrender.com/nowplaying");
-      if (!response.ok) throw new Error("Spotify not reachable");
+let progressInterval;
+let currentProgress = 0;
+let durationMs = 0;
 
-      const data = await response.json();
-      if (!data.item) throw new Error("Nothing is playing");
+function formatTime(ms) {
+  const totalSeconds = Math.floor(ms / 1000);
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  return `${minutes}:${seconds.toString().padStart(2, "0")}`;
+}
 
-      const track = data.item;
-      const trackName = track.name;
-      const artistName = track.artists.map(a => a.name).join(", ");
-      const albumArt = track.album.images[0].url;
+async function fetchSpotifyNowPlaying() {
+  try {
+    const response = await fetch("https://spotify-npp.onrender.com/nowplaying");
+    if (!response.ok) throw new Error("Spotify not reachable");
 
-      document.getElementById("spotify-track-name").textContent = trackName;
-      document.getElementById("spotify-artist-name").textContent = artistName;
-      document.getElementById("spotify-album-art").style.backgroundImage = `url(${albumArt})`;
-    } catch (err) {
-      document.getElementById("spotify-track-name").textContent = "Nothing Playing";
-      document.getElementById("spotify-artist-name").textContent = "Spotify idle...";
-      document.getElementById("spotify-album-art").style.backgroundImage = "none";
-    }
+    const data = await response.json();
+    if (!data.item) throw new Error("Nothing is playing");
+
+    const track = data.item;
+    currentProgress = data.progress_ms;
+    durationMs = track.duration_ms;
+
+    const trackName = track.name;
+    const artistName = track.artists.map(a => a.name).join(", ");
+    const albumArt = track.album.images[0].url;
+
+    // Set content
+    document.getElementById("spotify-track-name").textContent = trackName;
+    document.getElementById("spotify-artist-name").textContent = artistName;
+    document.getElementById("spotify-album-art").style.backgroundImage = `url(${albumArt})`;
+
+    // Set initial bar + time
+    const percent = (currentProgress / durationMs) * 100;
+    document.getElementById("spotify-progress-bar").style.width = `${percent}%`;
+    document.getElementById("spotify-time-display").textContent =
+      `${formatTime(currentProgress)} / ${formatTime(durationMs)}`;
+
+    // Clear existing interval
+    clearInterval(progressInterval);
+
+    // Animate progress locally
+    progressInterval = setInterval(() => {
+      currentProgress += 1000;
+
+      if (currentProgress >= durationMs) {
+        clearInterval(progressInterval);
+        fetchSpotifyNowPlaying(); // Trigger refresh immediately
+        return;
+      }
+
+      const updatedPercent = (currentProgress / durationMs) * 100;
+      document.getElementById("spotify-progress-bar").style.width = `${updatedPercent}%`;
+      document.getElementById("spotify-time-display").textContent =
+        `${formatTime(currentProgress)} / ${formatTime(durationMs)}`;
+    }, 1000);
+
+  } catch (err) {
+    // Error or not playing
+    document.getElementById("spotify-track-name").textContent = "Nothing Playing";
+    document.getElementById("spotify-artist-name").textContent = "Spotify idle...";
+    document.getElementById("spotify-album-art").style.backgroundImage = "none";
+    document.getElementById("spotify-progress-bar").style.width = "0%";
+    document.getElementById("spotify-time-display").textContent = "0:00 / 0:00";
+    clearInterval(progressInterval);
   }
+}
 
-  fetchSpotifyNowPlaying();
-  setInterval(fetchSpotifyNowPlaying, 60000); // every 1 min
+// Initial call
+fetchSpotifyNowPlaying();
+
+// Resync every 60 seconds
+setInterval(fetchSpotifyNowPlaying, 60000);
 });
