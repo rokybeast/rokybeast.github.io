@@ -1,223 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>rokybeast | About Me</title>
-    <link rel="stylesheet" href="./packages/css/styles.css" />
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap"
-      rel="stylesheet"
-    />
-    <meta name="description" content="[rokybeast] Personal Portfolio." />
-    <meta name="author" content="RokyBeast" />
-    <meta name="robots" content="index, follow" />
-    <link rel="icon" href="./assets/favicon/favicon.png" type="image/x-icon" />
-  </head>
 
-  <body data-theme="light">
-    <div class="grid-background"></div>
-    <nav id="navbar">
-      <div class="nav-logo">
-        <a href="#welcome">[r]</a>
-      </div>
-      <ul class="nav-links">
-        <li><a href="#welcome">Welcome</a></li>
-        <li><a href="#about-me">About</a></li>
-        <li><a href="#my-tools">My Tools</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#roadmap">Roadmap</a></li>
-      </ul>
-      <div class="theme-switcher">
-        <i class="bx bx-sun" id="theme-toggle-icon"></i>
-      </div>
-    </nav>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>rokybeast | About Me</title>
+  <link rel="stylesheet" href="./packages/css/styles.css" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet" />
+  <meta name="description" content="[rokybeast] Personal Portfolio." />
+  <meta name="author" content="RokyBeast" />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" href="./assets/favicon/favicon.png" type="image/x-icon" />
+</head>
 
-    <section id="welcome" class="full-screen-section">
-      <div class="polygon-bg"></div>
-      <div class="welcome-content">
-        <span class="logo-text">[rokybeast]</span>
-        <p>
-          Hi! I'm RokyBeast, your average developer, who knows stuff. Most
-          content here is filler, for now :)
-        </p>
-      </div>
-    </section>
+<body data-theme="light">
+  <div class="grid-background"></div>
+  <nav id="navbar">
+    <div class="nav-logo">
+      <a href="#welcome">[r]</a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#welcome">Welcome</a></li>
+      <li><a href="#about-me">About</a></li>
+      <li><a href="#my-tools">My Tools</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#roadmap">Roadmap</a></li>
+    </ul>
+    <div class="theme-switcher">
+      <i class="bx bx-sun" id="theme-toggle-icon"></i>
+    </div>
+  </nav>
 
-<section id="about-me">
-  <h2>About Me</h2>
-  <div class="about-me-content">
-    <p>
-      Yo! I'm Roky — the guy who thought naming a programming language after his headset was a flex (spoiler: it totally is 💁‍♂️). I live in code — whether it's Rust, Python, or JavaScript — and if I'm not making a whole new language or breaking one I just made, I'm probably trying to design a UI that *doesn’t* fry my eyeballs.
-    </p>
-    <p>
-      My brain runs on logic, anime, and the occasional bug-fix at 3AM. Big fan of cryptography, custom tools, and turning "what if I built this?" into "wait I actually built this??". When I’m not coding, I’m watching One Piece (yes, I finished it all. Yes, I’m built different), going down YouTube rabbit holes on how random stuff works, or casually overengineering a to-do list.
-    </p>
-    <p>
-      I make stuff for fun, for learning, and sometimes just to flex on past me. If the internet’s a playground, then I’m the kid trying to build a rollercoaster with math and duct tape. Let’s gooo 🚀
-    </p>
-  </div>
-</section>
-
-    <section id="my-tools">
-      <h2>My Tools</h2>
-      <div class="tools-circles-container"></div>
-      <div class="marquee-container">
-        <div class="marquee">
-          <!-- Tool logos will be dynamically generated here by script.js -->
-        </div>
-      </div>
-    </section>
-
-    <section id="projects">
-      <h2>My Projects</h2>
-      <div class="slideshow-container">
-        <div class="slide fade">
-          <img
-            src="https://placehold.co/800x400/383838/FFFFFF?text=Project+1"
-            style="width: 100%"
-            alt="Project 1 Placeholder"
-          />
-          <div class="slide-caption">Project Alpha</div>
-        </div>
-        <div class="slide fade">
-          <img
-            src="https://placehold.co/800x400/383838/FFFFFF?text=Project+2"
-            style="width: 100%"
-            alt="Project 2 Placeholder"
-          />
-          <div class="slide-caption">Project Beta</div>
-        </div>
-        <div class="slide fade">
-          <img
-            src="https://placehold.co/800x400/383838/FFFFFF?text=Project+3"
-            style="width: 100%"
-            alt="Project 3 Placeholder"
-          />
-          <div class="slide-caption">Project Gamma</div>
-        </div>
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-      </div>
-      <div style="text-align: center; margin-top: 15px">
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
-      </div>
-      <p
-        id="project-desc"
-        style="text-align: center; margin: 1.5rem 0 0 0; font-size: 1.1rem"
-      >
-        Project Alpha is a showcase of my first major project.
+  <section id="welcome" class="full-screen-section">
+    <div class="polygon-bg"></div>
+    <div class="welcome-content">
+      <span class="logo-text">[rokybeast]</span>
+      <p>
+        Hi! I'm RokyBeast, your average developer, who knows stuff. Most
+        content here is filler, for now :)
       </p>
-      <br />
-      <center>
-        <p style="margin-bottom: 20px">
-          <!-- Added margin-bottom here -->
-          Each of these projects have been developed with love (and many
-          errors).
-        </p>
-      </center>
-      <!-- New container for project buttons -->
-      <div class="project-buttons-container">
-        <div class="button-container">
-          <a
-            href="https://github.com/rokybeast/rokybeast.github.io"
-            target="_blank"
-            class="button"
-          >
-            View on GitHub <i class="bx bxl-github"></i>
-          </a>
-          <div class="button-shadow"></div>
-        </div>
-        <div class="button-container">
-          <a href="/tools/" target="_blank" class="button">
-            Online Tools <i class="bx bx-link-external"></i>
-          </a>
-          <div class="button-shadow"></div>
-        </div>
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="roadmap">
-  <h2>My Roadmap</h2>
-  <div class="roadmap-container">
-    <div class="roadmap-section">
-      <h3>Completed</h3>
-      <div class="roadmap-list">
-        <!-- Any completed items go here -->
+  <section id="about-me">
+    <h2>About Me</h2>
+    <div class="about-me-content">
+      <p>
+        Yo! I'm Roky — the guy who thought naming a programming language after his headset was a flex (spoiler: it
+        totally is 💁‍♂️). I live in code — whether it's Rust, Python, or JavaScript — and if I'm not making a whole new
+        language or breaking one I just made, I'm probably trying to design a UI that *doesn’t* fry my eyeballs.
+      </p>
+      <p>
+        My brain runs on logic, anime, and the occasional bug-fix at 3AM. Big fan of cryptography, custom tools, and
+        turning "what if I built this?" into "wait I actually built this??". When I’m not coding, I’m watching One Piece
+        (yes, I finished it all. Yes, I’m built different), going down YouTube rabbit holes on how random stuff works,
+        or casually overengineering a to-do list.
+      </p>
+      <p>
+        I make stuff for fun, for learning, and sometimes just to flex on past me. If the internet’s a playground, then
+        I’m the kid trying to build a rollercoaster with math and duct tape. Let’s gooo 🚀
+      </p>
+    </div>
+  </section>
+
+  <section id="my-tools">
+    <h2>My Tools</h2>
+    <div class="tools-circles-container"></div>
+    <div class="marquee-container">
+      <div class="marquee">
+        <!-- Tool logos will be dynamically generated here by script.js -->
       </div>
     </div>
+  </section>
 
-    <div class="roadmap-section">
-      <h3>In Progress</h3>
-      <div class="roadmap-list">
-        <div class="roadmap-item">
-          <h4>Poly/PolyScript</h4>
-          <p>
-            A Better programming language that Mr. JavaScript I guess.
-          </p>
+  <section id="projects">
+    <h2>My Projects</h2>
+    <div class="slideshow-container">
+      <div class="slide fade">
+        <img src="https://placehold.co/800x400/383838/FFFFFF?text=Project+1" style="width: 100%"
+          alt="Project 1 Placeholder" />
+        <div class="slide-caption">Project Alpha</div>
+      </div>
+      <div class="slide fade">
+        <img src="https://placehold.co/800x400/383838/FFFFFF?text=Project+2" style="width: 100%"
+          alt="Project 2 Placeholder" />
+        <div class="slide-caption">Project Beta</div>
+      </div>
+      <div class="slide fade">
+        <img src="https://placehold.co/800x400/383838/FFFFFF?text=Project+3" style="width: 100%"
+          alt="Project 3 Placeholder" />
+        <div class="slide-caption">Project Gamma</div>
+      </div>
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <div style="text-align: center; margin-top: 15px">
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+    <p id="project-desc" style="text-align: center; margin: 1.5rem 0 0 0; font-size: 1.1rem">
+      Project Alpha is a showcase of my first major project.
+    </p>
+    <br />
+    <center>
+      <p style="margin-bottom: 20px">
+        <!-- Added margin-bottom here -->
+        Each of these projects have been developed with love (and many
+        errors).
+      </p>
+    </center>
+    <!-- New container for project buttons -->
+    <div class="project-buttons-container">
+      <div class="button-container">
+        <a href="https://github.com/rokybeast/rokybeast.github.io" target="_blank" class="button">
+          View on GitHub <i class="bx bxl-github"></i>
+        </a>
+        <div class="button-shadow"></div>
+      </div>
+      <div class="button-container">
+        <a href="/tools/" target="_blank" class="button">
+          Online Tools <i class="bx bx-link-external"></i>
+        </a>
+        <div class="button-shadow"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="roadmap">
+    <h2>My Roadmap</h2>
+    <div class="roadmap-container">
+      <div class="roadmap-section">
+        <h3>Completed</h3>
+        <div class="roadmap-list">
+          <div class="roadmap-item">
+            <h4>IOEngine</h4>
+            <p>
+              An Input and Output Engine for VBA (idk why)
+            </p>
+            <a href="https://github.com/rokybeast/IOEngine" class="item-link">IOEngine</a>
+          </div>
+          <div class="roadmap-item">
+            <h4>ColorEngine</h4>
+            <p>
+              OLE Colors to RGB or smth, with a native Win32 API Color Picker for VBA
+            </p>
+            <a href="https://github.com/rokybeast/ColorEngine" class="item-link">ColorEngine</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="roadmap-section">
+        <h3>In Progress</h3>
+        <div class="roadmap-list">
+          <div class="roadmap-item">
+            <h4>Poly/PolyScript</h4>
+            <p>
+              A Better programming language that Mr. JavaScript I guess
+            </p>
+          </div>
+        </div>
+      </div>
+<<<<<<< HEAD
+=======
+    </div>
+>>>>>>> 68e88baa74912403321436e715818d4deea9b799
+
+      <div class="roadmap-section">
+        <h3>Planned</h3>
+        <div class="roadmap-list">
+          <!-- Future stuff here -->
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="roadmap-section">
-      <h3>Planned</h3>
-      <div class="roadmap-list">
-        <!-- Future stuff here -->
-      </div>
+
+  <footer id="footer">
+    <div class="footer-links">
+      <a href="https://github.com/rokybeast" target="_blank" aria-label="GitHub Profile"><i
+          class="bx bxl-github"></i></a>
+      <a href="https://x.com/RokyBeast_" target="_blank" aria-label="Twitter Profile"><i class="bx bxl-twitter"></i></a>
+      <a href="mailto:sajid.shaik1186@gmail.com" target="_blank" aria-label="Email"><i class="bx bx-at"></i></a>
+      <a href="https://discordapp.com/users/r0kyb3ast" target="_blank" aria-label="Discord"><i
+          class="bx bxl-discord-alt"></i></a>
     </div>
-  </div>
-</section>
+    <p class="copyright">© RokyBeast 2025-26</p>
+  </footer>
 
-
-    <footer id="footer">
-      <div class="footer-links">
-        <a
-          href="https://github.com/rokybeast"
-          target="_blank"
-          aria-label="GitHub Profile"
-          ><i class="bx bxl-github"></i
-        ></a>
-        <a
-          href="https://x.com/RokyBeast_"
-          target="_blank"
-          aria-label="Twitter Profile"
-          ><i class="bx bxl-twitter"></i
-        ></a>
-        <a
-          href="mailto:sajid.shaik1186@gmail.com"
-          target="_blank"
-          aria-label="Email"
-          ><i class="bx bx-at"></i
-        ></a>
-        <a
-          href="https://discordapp.com/users/r0kyb3ast"
-          target="_blank"
-          aria-label="Discord"
-          ><i class="bx bxl-discord-alt"></i
-        ></a>
-      </div>
-      <p class="copyright">© RokyBeast 2025-26</p>
-    </footer>
-
-    <button
-      id="to-top-btn"
-      class="contact-button to-top-btn"
-      title="Back to Top"
-    >
-      <i class="bx bx-arrow-to-top"></i>
-    </button>
-    <script src="./packages/js/scripts.js"></script>
-  </body>
+  <button id="to-top-btn" class="contact-button to-top-btn" title="Back to Top">
+    <i class="bx bx-arrow-to-top"></i>
+  </button>
+  <script src="./packages/js/scripts.js"></script>
+</body>
 </html>
