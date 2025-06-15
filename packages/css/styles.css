@@ -125,15 +125,18 @@ body {
   position: relative;
 }
 
-.item-link{
+.item-link,
+.item-link:visited,
+.item-link:hover,
+.item-link:active {
   color: var(--text-color);
   text-decoration: none;
 }
 
-.item-link:hover{
-  color: var(--text-color);
+.item-link:hover {
   text-decoration: underline;
 }
+
 
 /* --- Custom Scrollbar --- */
 ::-webkit-scrollbar {
