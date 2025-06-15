@@ -233,78 +233,118 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // --- Spotify Now Playing Widget ---
+// --- Spotify Now Playing Widget ---
 let progressInterval;
 let currentProgress = 0;
 let durationMs = 0;
+let isPlaying = false;
 
 function formatTime(ms) {
-  const totalSeconds = Math.floor(ms / 1000);
-  const minutes = Math.floor(totalSeconds / 60);
-  const seconds = totalSeconds % 60;
-  return `${minutes}:${seconds.toString().padStart(2, "0")}`;
+   const totalSeconds = Math.floor(ms / 1000);
+   const minutes = Math.floor(totalSeconds / 60);
+   const seconds = totalSeconds % 60;
+   return `${minutes}:${seconds.toString().padStart(2, "0")}`;
+}
+
+function updateWaveformState(playing) {
+   const waveform = document.getElementById("spotify-waveform");
+   if (playing) {
+       waveform.classList.add("active");
+       waveform.classList.remove("paused");
+   } else {
+       waveform.classList.remove("active");
+       waveform.classList.add("paused");
+   }
 }
 
 async function fetchSpotifyNowPlaying() {
-  try {
-    const response = await fetch("https://spotify-npp.onrender.com/nowplaying");
-    if (!response.ok) throw new Error("Spotify not reachable");
+   try {
+       const response = await fetch("https://spotify-npp.onrender.com/nowplaying");
+       if (!response.ok) throw new Error("Spotify not reachable");
 
-    const data = await response.json();
-    if (!data.item) throw new Error("Nothing is playing");
+       const data = await response.json();
+       if (!data.item) throw new Error("Nothing is playing");
 
-    const track = data.item;
-    currentProgress = data.progress_ms;
-    durationMs = track.duration_ms;
+       const track = data.item;
+       const newProgress = data.progress_ms;
+       const newDuration = track.duration_ms;
+       const newIsPlaying = data.is_playing;
 
-    const trackName = track.name;
-    const artistName = track.artists.map(a => a.name).join(", ");
-    const albumArt = track.album.images[0].url;
+       const trackChanged = durationMs !== newDuration || 
+           document.getElementById("spotify-track-name").textContent !== track.name;
 
-    // Set content
-    document.getElementById("spotify-track-name").textContent = trackName;
-    document.getElementById("spotify-artist-name").textContent = artistName;
-    document.getElementById("spotify-album-art").style.backgroundImage = `url(${albumArt})`;
+       if (trackChanged) {
+           document.getElementById("spotify-track-name").textContent = track.name;
+           document.getElementById("spotify-artist-name").textContent = 
+               track.artists.map(a => a.name).join(", ");
+           document.getElementById("spotify-album-art").style.backgroundImage = 
+               `url(${track.album.images[0].url})`;
+       }
 
-    // Set initial bar + time
-    const percent = (currentProgress / durationMs) * 100;
-    document.getElementById("spotify-progress-bar").style.width = `${percent}%`;
-    document.getElementById("spotify-time-display").textContent =
-      `${formatTime(currentProgress)} / ${formatTime(durationMs)}`;
+       currentProgress = newProgress;
+       durationMs = newDuration;
+       isPlaying = newIsPlaying;
 
-    // Clear existing interval
-    clearInterval(progressInterval);
+       updateWaveformState(isPlaying);
+       updateProgressUI();
 
-    // Animate progress locally
-    progressInterval = setInterval(() => {
-      currentProgress += 1000;
+       clearInterval(progressInterval);
 
-      if (currentProgress >= durationMs) {
-        clearInterval(progressInterval);
-        fetchSpotifyNowPlaying(); // Trigger refresh immediately
-        return;
-      }
+       if (isPlaying) {
+           progressInterval = setInterval(() => {
+               currentProgress += 1000;
+               updateProgressUI();
 
-      const updatedPercent = (currentProgress / durationMs) * 100;
-      document.getElementById("spotify-progress-bar").style.width = `${updatedPercent}%`;
-      document.getElementById("spotify-time-display").textContent =
-        `${formatTime(currentProgress)} / ${formatTime(durationMs)}`;
-    }, 1000);
+               if (currentProgress >= durationMs) {
+                   clearInterval(progressInterval);
+                   setTimeout(fetchSpotifyNowPlaying, 1000);
+               }
+           }, 1000);
+       }
+   } catch (err) {
+       console.log("Spotify error:", err.message);
 
-  } catch (err) {
-    // Error or not playing
-    document.getElementById("spotify-track-name").textContent = "Nothing Playing";
-    document.getElementById("spotify-artist-name").textContent = "Spotify idle...";
-    document.getElementById("spotify-album-art").style.backgroundImage = "none";
-    document.getElementById("spotify-progress-bar").style.width = "0%";
-    document.getElementById("spotify-time-display").textContent = "0:00 / 0:00";
-    clearInterval(progressInterval);
-  }
+       document.getElementById("spotify-track-name").textContent = "Nothing Playing";
+       document.getElementById("spotify-artist-name").textContent = "Spotify idle...";
+       document.getElementById("spotify-album-art").style.backgroundImage = "none";
+       document.getElementById("spotify-progress-bar").style.width = "0%";
+       document.getElementById("spotify-time-display").textContent = "0:00 / 0:00";
+
+       document.getElementById("spotify-waveform").classList.remove("active");
+       document.getElementById("spotify-waveform").classList.add("paused");
+
+       clearInterval(progressInterval);
+       isPlaying = false;
+   }
 }
 
-// Initial call
+function updateProgressUI() {
+   const percent = durationMs > 0 ? (currentProgress / durationMs) * 100 : 0;
+   document.getElementById("spotify-progress-bar").style.width = `${Math.min(percent, 100)}%`;
+   document.getElementById("spotify-time-display").textContent =
+       `${formatTime(currentProgress)} / ${formatTime(durationMs)}`;
+}
+
+// Initial load
 fetchSpotifyNowPlaying();
 
-// Resync every 60 seconds
-setInterval(fetchSpotifyNowPlaying, 60000);
+// Main sync every 30s
+setInterval(fetchSpotifyNowPlaying, 30000);
+
+// Additional check every 10s for pause/play change
+setInterval(async () => {
+   if (isPlaying) {
+       try {
+           const response = await fetch("https://spotify-npp.onrender.com/nowplaying");
+           if (response.ok) {
+               const data = await response.json();
+               if (data.item && data.is_playing !== isPlaying) {
+                   fetchSpotifyNowPlaying(); // Full refresh if play state changed
+               }
+           }
+       } catch (_) {
+           // Ignore errors
+       }
+   }
+}, 10000);
 });
