@@ -798,17 +798,19 @@ body[data-theme="light"] .dot {
 .button-container:hover .button {
   transform: translate(var(--hover-shift), var(--hover-shift));
 }
+
 .button-container:hover .button-shadow {
   transform: translate(calc(-1 * var(--hover-shift)), calc(-1 * var(--hover-shift)));
 }
 
-body[data-theme="light"] .button-container:hover .button {
-  background-color: var(--accent-color);
+body[data-theme="dark"] .button-container:hover .button {
+  background-color: var(--grey-800);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 body[data-theme="dark"] .button-container:hover .button {
-  background-color: var(--grey-700);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  background-color: var(--accent-color);
+  opacity: 0.9;
 }
 
 /* --- Footer Section --- */
