@@ -6,38 +6,38 @@ document.addEventListener("DOMContentLoaded", () => {
   const toolData = [
     {
       name: "HTML",
-      srcLight: "https://cdn.simpleicons.org/html5/000",
-      srcDark: "https://cdn.simpleicons.org/html5/fff",
+      srcLight: "https://cdn.simpleicons.org/html5",
+      srcDark: "https://cdn.simpleicons.org/html5",
     },
     {
       name: "CSS",
-      srcLight: "https://cdn.simpleicons.org/css/000",
-      srcDark: "https://cdn.simpleicons.org/css/fff",
+      srcLight: "https://cdn.simpleicons.org/css",
+      srcDark: "https://cdn.simpleicons.org/css",
     },
     {
       name: "SCSS",
-      srcLight: "https://cdn.simpleicons.org/sass/000",
-      srcDark: "https://cdn.simpleicons.org/sass/fff",
+      srcLight: "https://cdn.simpleicons.org/sass",
+      srcDark: "https://cdn.simpleicons.org/sass",
     },
     {
       name: "JavaScript",
-      srcLight: "https://cdn.simpleicons.org/javascript/000",
-      srcDark: "https://cdn.simpleicons.org/javascript/fff",
+      srcLight: "https://cdn.simpleicons.org/javascript",
+      srcDark: "https://cdn.simpleicons.org/javascript",
     },
     {
       name: "VBA",
-      srcLight: "https://api.iconify.design/simple-icons/visualbasic.svg?color=%23000",
-      srcDark: "https://api.iconify.design/simple-icons/visualbasic.svg?color=%23fff",
+      srcLight: "https://api.iconify.design/simple-icons/visualbasic.svg?color=%232B579A",
+      srcDark: "https://api.iconify.design/simple-icons/visualbasic.svg?color=%232B579A"
     },
     {
       name: "PowerPoint",
-      srcLight: "https://api.iconify.design/mdi/microsoft-powerpoint.svg?color=%23000",
-      srcDark: "https://api.iconify.design/mdi/microsoft-powerpoint.svg?color=%23fff",
+      srcLight: "https://api.iconify.design/mdi/microsoft-powerpoint.svg",
+      srcDark: "https://api.iconify.design/mdi/microsoft-powerpoint.svg",
     },
     {
       name: "React",
-      srcLight: "https://cdn.simpleicons.org/react/000",
-      srcDark: "https://cdn.simpleicons.org/react/fff",
+      srcLight: "https://cdn.simpleicons.org/react",
+      srcDark: "https://cdn.simpleicons.org/react",
     },
     {
       name: "Next.js",
@@ -46,43 +46,43 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       name: "Bootstrap",
-      srcLight: "https://cdn.simpleicons.org/bootstrap/000",
-      srcDark: "https://cdn.simpleicons.org/bootstrap/fff",
+      srcLight: "https://cdn.simpleicons.org/bootstrap",
+      srcDark: "https://cdn.simpleicons.org/bootstrap",
     },
     {
       name: "Tailwind CSS",
-      srcLight: "https://cdn.simpleicons.org/tailwindcss/000",
-      srcDark: "https://cdn.simpleicons.org/tailwindcss/fff",
+      srcLight: "https://cdn.simpleicons.org/tailwindcss",
+      srcDark: "https://cdn.simpleicons.org/tailwindcss",
     },
     {
       name: "MongoDB",
-      srcLight: "https://cdn.simpleicons.org/mongodb/000",
-      srcDark: "https://cdn.simpleicons.org/mongodb/fff",
+      srcLight: "https://cdn.simpleicons.org/mongodb",
+      srcDark: "https://cdn.simpleicons.org/mongodb",
     },
     {
       name: "PHP",
-      srcLight: "https://cdn.simpleicons.org/php/000",
-      srcDark: "https://cdn.simpleicons.org/php/fff",
+      srcLight: "https://cdn.simpleicons.org/php",
+      srcDark: "https://cdn.simpleicons.org/php",
     },
     {
       name: "Rust",
-      srcLight: "https://cdn.simpleicons.org/rust/000",
-      srcDark: "https://cdn.simpleicons.org/rust/fff",
+      srcLight: "https://cdn.simpleicons.org/rust/F74C00",
+      srcDark: "https://cdn.simpleicons.org/rust/F74C00",
     },
     {
       name: "C++",
-      srcLight: "https://cdn.simpleicons.org/cplusplus/000",
-      srcDark: "https://cdn.simpleicons.org/cplusplus/fff",
+      srcLight: "https://cdn.simpleicons.org/cplusplus",
+      srcDark: "https://cdn.simpleicons.org/cplusplus",
     },
     {
       name: "Bash",
-      srcLight: "https://cdn.simpleicons.org/gnubash/000",
-      srcDark: "https://cdn.simpleicons.org/gnubash/fff",
+      srcLight: "https://cdn.simpleicons.org/gnubash",
+      srcDark: "https://cdn.simpleicons.org/gnubash",
     },
     {
       name: "Markdown",
-      srcLight: "https://cdn.simpleicons.org/markdown/000",
-      srcDark: "https://cdn.simpleicons.org/markdown/fff",
+      srcLight: "https://cdn.simpleicons.org/markdown/083fa1",
+      srcDark: "https://cdn.simpleicons.org/markdown/083fa1",
     },
   ];
 
