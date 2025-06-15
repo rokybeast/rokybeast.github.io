@@ -3,7 +3,88 @@ document.addEventListener("DOMContentLoaded", () => {
   const themeToggleButton = document.getElementById("theme-toggle-icon");
   const body = document.body;
 
-  const toolData = [/* ... your tool list ... */];
+  const toolData = [
+    {
+      name: "HTML",
+      srcLight: "https://cdn.simpleicons.org/html5",
+      srcDark: "https://cdn.simpleicons.org/html5",
+    },
+    {
+      name: "CSS",
+      srcLight: "https://cdn.simpleicons.org/css3",
+      srcDark: "https://cdn.simpleicons.org/css3",
+    },
+    {
+      name: "SCSS",
+      srcLight: "https://cdn.simpleicons.org/sass",
+      srcDark: "https://cdn.simpleicons.org/sass",
+    },
+    {
+      name: "JavaScript",
+      srcLight: "https://cdn.simpleicons.org/javascript",
+      srcDark: "https://cdn.simpleicons.org/javascript",
+    },
+    {
+      name: "VBA",
+      srcLight: "https://api.iconify.design/simple-icons/visualbasic.svg",
+      srcDark: "https://api.iconify.design/simple-icons/visualbasic.svg",
+    },
+    {
+      name: "PowerPoint",
+      srcLight: "https://api.iconify.design/mdi/microsoft-powerpoint.svg",
+      srcDark: "https://api.iconify.design/mdi/microsoft-powerpoint.svg",
+    },
+    {
+      name: "React",
+      srcLight: "https://cdn.simpleicons.org/react",
+      srcDark: "https://cdn.simpleicons.org/react",
+    },
+    {
+      name: "Next.js",
+      srcLight: "https://cdn.simpleicons.org/nextdotjs",
+      srcDark: "https://cdn.simpleicons.org/nextdotjs",
+    },
+    {
+      name: "Bootstrap",
+      srcLight: "https://cdn.simpleicons.org/bootstrap",
+      srcDark: "https://cdn.simpleicons.org/bootstrap",
+    },
+    {
+      name: "Tailwind CSS",
+      srcLight: "https://cdn.simpleicons.org/tailwindcss",
+      srcDark: "https://cdn.simpleicons.org/tailwindcss",
+    },
+    {
+      name: "MongoDB",
+      srcLight: "https://cdn.simpleicons.org/mongodb",
+      srcDark: "https://cdn.simpleicons.org/mongodb",
+    },
+    {
+      name: "PHP",
+      srcLight: "https://cdn.simpleicons.org/php",
+      srcDark: "https://cdn.simpleicons.org/php",
+    },
+    {
+      name: "Rust",
+      srcLight: "https://cdn.simpleicons.org/rust",
+      srcDark: "https://cdn.simpleicons.org/rust",
+    },
+    {
+      name: "C++",
+      srcLight: "https://cdn.simpleicons.org/cplusplus",
+      srcDark: "https://cdn.simpleicons.org/cplusplus",
+    },
+    {
+      name: "Bash",
+      srcLight: "https://cdn.simpleicons.org/gnubash",
+      srcDark: "https://cdn.simpleicons.org/gnubash",
+    },
+    {
+      name: "Markdown",
+      srcLight: "https://cdn.simpleicons.org/markdown",
+      srcDark: "https://cdn.simpleicons.org/markdown",
+    },
+  ];
 
   function createToolLogos(theme) {
     const marquee = document.querySelector(".marquee");
@@ -34,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function applyTheme(theme) {
     body.setAttribute("data-theme", theme);
     localStorage.setItem("theme", theme);
-    
+
     if (theme === "dark") {
       themeToggleButton.classList.remove("bx-sun");
       themeToggleButton.classList.add("bx-moon");
