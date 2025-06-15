@@ -778,16 +778,6 @@ body[data-theme="light"] .dot {
   z-index: 1;
 }
 
-body[data-theme="dark"] .button:hover {
-  background-color: var(--grey-200);
-  transform: translateY(-2px);
-}
-
-body[data-theme="dark"] .button:hover {
-  background-color: var(--grey-700);
-  transform: translateY(-2px);
-}
-
 .button-shadow {
   content: "";
   position: absolute;
@@ -802,12 +792,24 @@ body[data-theme="dark"] .button:hover {
     cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.button-container:hover .button-shadow {
+body[data-theme="light"] .button-container:hover .button-shadow {
   transform: translate(-2px, -2px);
 }
-.button-container:hover .button {
+body[data-theme="light"] .button-container:hover .button {
   transform: translate(2px, 2px);
 }
+
+body[data-theme="dark"] .button:hover {
+  background-color: var(--grey-700);
+  transform: translateY(-2px);
+}
+body[data-theme="dark"] .button-shadow {
+  transition: none;
+}
+body[data-theme="dark"] .button-container:hover .button-shadow {
+  transform: translateY(2px);
+}
+
 
 /* --- Footer Section --- */
 #footer {
