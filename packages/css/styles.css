@@ -48,6 +48,8 @@
   --button-shadow-color-light: var(--grey-300);
   --circle-color-light-1: var(--grey-300);
   --circle-color-light-2: var(--grey-400);
+  --shadow-offset: 5px;
+  --hover-shift: 2px;
 
   /* --- Grey Scale: Dark Theme --- */
   --text-color-dark: var(--grey-50);
@@ -772,7 +774,8 @@ body[data-theme="light"] .dot {
   font-size: 1.1rem;
   border: none;
   cursor: pointer;
-  transition: transform var(--transition-speed-fast) ease,
+  transition:
+    transform var(--transition-speed-fast) ease,
     background-color var(--transition-speed-fast) ease;
   position: relative;
   z-index: 1;
@@ -781,8 +784,8 @@ body[data-theme="light"] .dot {
 .button-shadow {
   content: "";
   position: absolute;
-  left: 5px;
-  top: 5px;
+  top: var(--shadow-offset);
+  left: var(--shadow-offset);
   width: 100%;
   height: 100%;
   background-color: var(--button-shadow-color);
@@ -795,18 +798,19 @@ body[data-theme="light"] .dot {
 body[data-theme="light"] .button-container:hover .button {
   transform: translate(var(--hover-shift), var(--hover-shift));
 }
+
 body[data-theme="light"] .button-container:hover .button-shadow {
   transform: translate(calc(-1 * var(--hover-shift)), calc(-1 * var(--hover-shift)));
 }
 
 body[data-theme="dark"] .button-container:hover .button {
-  transform: translateY(-1 * var(--hover-shift));
+  transform: translateY(calc(-1 * var(--hover-shift)));
   background-color: var(--grey-700);
 }
+
 body[data-theme="dark"] .button-container:hover .button-shadow {
   transform: translateY(var(--hover-shift));
 }
-
 
 /* --- Footer Section --- */
 #footer {
