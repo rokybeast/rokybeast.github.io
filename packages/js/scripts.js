@@ -233,27 +233,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // --- Spotify Now Playing Logic ---
+  // --- Spotify Now Playing Widget ---
   async function fetchSpotifyNowPlaying() {
     try {
-      const response = await fetch("https://yourproxy.com/spotify/nowplaying", {
-        headers: {
-          Authorization: "Bearer YOUR_SPOTIFY_ACCESS_TOKEN"
-        }
-      });
-
-      if (!response.ok) throw new Error("Not playing");
+      const response = await fetch("https://spotify-npp.onrender.com/nowplaying");
+      if (!response.ok) throw new Error("Spotify not reachable");
 
       const data = await response.json();
+      if (!data.item) throw new Error("Nothing is playing");
 
-      const trackName = data.item.name;
-      const artistName = data.item.artists.map(a => a.name).join(", ");
-      const albumArt = data.item.album.images[0].url;
+      const track = data.item;
+      const trackName = track.name;
+      const artistName = track.artists.map(a => a.name).join(", ");
+      const albumArt = track.album.images[0].url;
 
       document.getElementById("spotify-track-name").textContent = trackName;
       document.getElementById("spotify-artist-name").textContent = artistName;
       document.getElementById("spotify-album-art").style.backgroundImage = `url(${albumArt})`;
-
     } catch (err) {
       document.getElementById("spotify-track-name").textContent = "Nothing Playing";
       document.getElementById("spotify-artist-name").textContent = "Spotify idle...";
@@ -262,5 +258,5 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   fetchSpotifyNowPlaying();
-  setInterval(fetchSpotifyNowPlaying, 60000); // auto-refresh every 1 minute
+  setInterval(fetchSpotifyNowPlaying, 60000); // every 1 min
 });
