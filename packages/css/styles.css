@@ -795,21 +795,16 @@ body[data-theme="light"] .dot {
     cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-body[data-theme="light"] .button-container:hover .button {
+.button-container:hover .button {
   transform: translate(var(--hover-shift), var(--hover-shift));
 }
 
-body[data-theme="light"] .button-container:hover .button-shadow {
+.button-container:hover .button-shadow {
   transform: translate(calc(-1 * var(--hover-shift)), calc(-1 * var(--hover-shift)));
 }
 
 body[data-theme="dark"] .button-container:hover .button {
-  transform: translateY(calc(-1 * var(--hover-shift)));
   background-color: var(--grey-700);
-}
-
-body[data-theme="dark"] .button-container:hover .button-shadow {
-  transform: translateY(var(--hover-shift));
 }
 
 /* --- Footer Section --- */
