@@ -182,9 +182,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- Slideshow Logic ---
   let slideIndex = 1;
   const projectDescriptions = [
-    "Project Alpha is a showcase of my first major project.",
-    "Project Beta is a collaborative effort with a focus on UI/UX.",
-    "Project Gamma explores advanced backend integrations.",
+    "RippleKit, a CSS Framework with custom Elements.",
+    "Polyx, is a programming language built with JavaScript + Rust in mind.",
+    "Project: Mountain, a PPTOS, focusing and relying heavily on WinAPI (Archived until October)",
   ];
   showSlides(slideIndex);
 
