@@ -131,7 +131,7 @@ body {
 }
 
 .item-link:hover{
-  color: var(--grey-900);
+  text-decoration: underline;
 }
 
 /* --- Custom Scrollbar --- */
