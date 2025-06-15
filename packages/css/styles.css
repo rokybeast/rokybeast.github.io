@@ -127,16 +127,20 @@ body {
 
 .item-link,
 .item-link:visited,
+.item-link:active,
 .item-link:hover,
-.item-link:active {
+.item-link:focus {
+  all: unset;
   color: var(--text-color);
+  cursor: pointer;
   text-decoration: none;
+  font-family: inherit;
+  font-size: inherit;
 }
 
 .item-link:hover {
   text-decoration: underline;
 }
-
 
 /* --- Custom Scrollbar --- */
 ::-webkit-scrollbar {
