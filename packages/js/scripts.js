@@ -76,8 +76,8 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       name: "Bash",
-      srcLight: "https://cdn.simpleicons.org/gnubash/000",
-      srcDark: "https://cdn.simpleicons.org/gnubash/fff",
+      srcLight: "https://cdn.simpleicons.org/gnubash",
+      srcDark: "https://cdn.simpleicons.org/gnubash",
     },
     {
       name: "Markdown",
