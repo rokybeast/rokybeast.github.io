@@ -116,9 +116,9 @@ document.addEventListener("DOMContentLoaded", () => {
     newFavicon.rel = "icon";
     newFavicon.type = "image/png";
 
-    newFavicon.href = theme === "dark" 
-        ? "../../assets/favicon/favicon_dark.png" 
-        : "../../assets/favicon/favicon_light.png";
+    newFavicon.href = theme === "dark"
+      ? "../../assets/favicon/favicon_dark.png"
+      : "../../assets/favicon/favicon_light.png";
     head.appendChild(newFavicon);
   }
 
@@ -232,4 +232,35 @@ document.addEventListener("DOMContentLoaded", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
   }
+
+  // --- Spotify Now Playing Logic ---
+  async function fetchSpotifyNowPlaying() {
+    try {
+      const response = await fetch("https://yourproxy.com/spotify/nowplaying", {
+        headers: {
+          Authorization: "Bearer YOUR_SPOTIFY_ACCESS_TOKEN"
+        }
+      });
+
+      if (!response.ok) throw new Error("Not playing");
+
+      const data = await response.json();
+
+      const trackName = data.item.name;
+      const artistName = data.item.artists.map(a => a.name).join(", ");
+      const albumArt = data.item.album.images[0].url;
+
+      document.getElementById("spotify-track-name").textContent = trackName;
+      document.getElementById("spotify-artist-name").textContent = artistName;
+      document.getElementById("spotify-album-art").style.backgroundImage = `url(${albumArt})`;
+
+    } catch (err) {
+      document.getElementById("spotify-track-name").textContent = "Nothing Playing";
+      document.getElementById("spotify-artist-name").textContent = "Spotify idle...";
+      document.getElementById("spotify-album-art").style.backgroundImage = "none";
+    }
+  }
+
+  fetchSpotifyNowPlaying();
+  setInterval(fetchSpotifyNowPlaying, 60000); // auto-refresh every 1 minute
 });
