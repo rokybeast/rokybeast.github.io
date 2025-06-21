@@ -6,7 +6,6 @@
   font-style: normal;
 }
 
-/* === Root Variables === */
 :root {
   --font-default: "JetBrains Mono", monospace;
   --font-heading: "Space Grotesk", sans-serif;
@@ -21,20 +20,20 @@
   --border-radius-large: 16px;
   --border-radius-round: 50%;
 
-  /* === Grey Scale: Light Theme === */
-  --grey-50: #f9f9f9;
-  --grey-100: #f0f0f0;
-  --grey-200: #dcdcdc;
-  --grey-300: #c0c0c0;
-  --grey-400: #a0a0a0;
-  --grey-500: #808080;
-  --grey-600: #606060;
-  --grey-700: #404040;
-  --grey-800: #2a2a2a;
-  --grey-900: #1a1a1a;
-  --grey-950: #0a0a0a;
+  /* === Purple Scale: Light Theme === */
+  --grey-50: #faf5ff;
+  --grey-100: #f3e8ff;
+  --grey-200: #e9d5ff;
+  --grey-300: #d8b4fe;
+  --grey-400: #c084fc;
+  --grey-500: #a855f7;
+  --grey-600: #9333ea;
+  --grey-700: #7e22ce;
+  --grey-800: #6b21a8;
+  --grey-900: #581c87;
+  --grey-950: #3b0764;
 
-  --text-color-light: #1a1a1a;
+  --text-color-light: #581c87;
   --bg-color-light: var(--grey-50);
   --navbar-bg-light: rgba(255, 255, 255, 0.85);
   --card-bg-light: var(--grey-100);
@@ -42,19 +41,19 @@
   --grid-color-light: var(--grey-200);
   --scrollbar-thumb-light: var(--grey-400);
   --scrollbar-track-light: var(--grey-100);
-  --selection-bg-light: #000;
+  --selection-bg-light: #581c87;
   --selection-text-light: #fff;
-  --shadow-color-light: rgba(0, 0, 0, 0.1);
+  --shadow-color-light: rgba(88, 28, 135, 0.2);
   --button-shadow-color-light: var(--grey-300);
   --circle-color-light-1: var(--grey-300);
   --circle-color-light-2: var(--grey-400);
   --shadow-offset: 5px;
   --hover-shift: 2px;
 
-  /* === Grey Scale: Dark Theme === */
+  /* === Purple Scale: Dark Theme === */
   --text-color-dark: var(--grey-50);
-  --bg-color-dark: #0a0a0a;
-  --navbar-bg-dark: rgba(20, 20, 20, 0.85);
+  --bg-color-dark: #3b0764;
+  --navbar-bg-dark: rgba(59, 7, 100, 0.85);
   --card-bg-dark: var(--grey-900);
   --accent-color-dark: var(--grey-500);
   --grid-color-dark: var(--grey-800);
