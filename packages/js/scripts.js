@@ -183,8 +183,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let slideIndex = 1;
   const projectDescriptions = [
     "RippleKit, a CSS Framework with custom elements.",
-    "Project: Mountain, a PPTOS, focusing on WinAPI (Archived until October)",
     "Poly, A programming language, with new elements, to change the world ahh type stuff.",
+    "Project: Mountain, a PPTOS, focusing on WinAPI (Archived until October).",
   ];
   showSlides(slideIndex);
 
