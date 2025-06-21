@@ -362,8 +362,8 @@ function applyDynamicTheme(dominantColor) {
     const accentGlow = `rgba(${r}, ${g}, ${b}, 0.4)`;
     
     // Set CSS custom property for hover effects
-    document.documentElement.style.setProperty('--accent-color', accentColor);
-    document.documentElement.style.setProperty('--accent-rgb', `${r}, ${g}, ${b}`);
+    widget.style.setProperty('--accent-color', accentColor);
+    widget.style.setProperty('--accent-rgb', `${r}, ${g}, ${b}`);
     
     progressBar.style.backgroundColor = accentColor;
     progressBar.style.boxShadow = `0 0 10px ${accentGlow}`;
