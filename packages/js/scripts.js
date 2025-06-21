@@ -249,9 +249,8 @@ function formatTime(ms) {
   return `${minutes}:${seconds.toString().padStart(2, "0")}`;
 }
 
-// Show loading state
 function showLoadingState() {
-  if (isLoading) return; // Prevent multiple loading states
+  if (isLoading) return;
   isLoading = true;
   
   const widget = document.querySelector('.spotify-now-playing');
@@ -260,28 +259,21 @@ function showLoadingState() {
   const artistName = document.getElementById('spotify-artist-name');
   const progressBar = document.getElementById('spotify-progress-bar');
   const timeDisplay = document.getElementById('spotify-time-display');
-  
-  // Add loading class to widget
+
   widget.classList.add('spotify-loading');
-  
-  // Show skeleton for album art
   albumArt.innerHTML = '<div class="spotify-spinner"></div>';
   albumArt.className = 'spotify-album-art spotify-album-loading';
   albumArt.style.backgroundImage = 'none';
-  
-  // Show skeleton text
+
   trackName.innerHTML = '<div class="spotify-skeleton spotify-track-name-skeleton"></div>';
   artistName.innerHTML = '<div class="spotify-skeleton spotify-artist-name-skeleton"></div>';
-  
-  // Show skeleton progress
+
   progressBar.className = 'spotify-skeleton';
   progressBar.style.width = '100%';
-  
-  // Show skeleton time
+
   timeDisplay.innerHTML = '<div class="spotify-skeleton spotify-time-skeleton"></div>';
 }
 
-// Hide loading state
 function hideLoadingState() {
   if (!isLoading) return;
   isLoading = false;
@@ -289,19 +281,16 @@ function hideLoadingState() {
   const widget = document.querySelector('.spotify-now-playing');
   const albumArt = document.getElementById('spotify-album-art');
   const progressBar = document.getElementById('spotify-progress-bar');
-  
-  // Remove loading classes
+
   widget.classList.remove('spotify-loading');
   albumArt.classList.remove('spotify-album-loading');
   albumArt.innerHTML = '';
   progressBar.classList.remove('spotify-skeleton');
-  
-  // Add fade-in animation
+
   widget.classList.add('spotify-fade-in');
   setTimeout(() => widget.classList.remove('spotify-fade-in'), 500);
 }
 
-// Function to extract dominant color from album art
 function extractAlbumColor(imageUrl) {
   return new Promise((resolve) => {
     const img = new Image();
@@ -348,7 +337,10 @@ function extractAlbumColor(imageUrl) {
   });
 }
 
-// Apply dynamic theme colors
+function isDarkMode() {
+  return document.body.getAttribute('data-theme') === 'dark';
+}
+
 function applyDynamicTheme(dominantColor) {
   const widget = document.querySelector('.spotify-now-playing');
   const progressBar = document.getElementById('spotify-progress-bar');
@@ -356,26 +348,49 @@ function applyDynamicTheme(dominantColor) {
   const rgbMatch = dominantColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
   if (rgbMatch) {
     const [, r, g, b] = rgbMatch;
+    const isDark = isDarkMode();
+
+    const dynamicColor = dominantColor;
+    const dynamicColorLight = isDark 
+      ? `rgba(${r}, ${g}, ${b}, 0.3)` 
+      : `rgba(${r}, ${g}, ${b}, 0.2)`;
+    const dynamicColorGlow = isDark 
+      ? `rgba(${r}, ${g}, ${b}, 0.6)` 
+      : `rgba(${r}, ${g}, ${b}, 0.4)`;
+
+    document.documentElement.style.setProperty('--spotify-dynamic-color', dynamicColor);
+    document.documentElement.style.setProperty('--spotify-dynamic-rgb', `${r}, ${g}, ${b}`);
+    document.documentElement.style.setProperty('--spotify-dynamic-light', dynamicColorLight);
+    document.documentElement.style.setProperty('--spotify-dynamic-glow', dynamicColorGlow);
+
+    progressBar.style.backgroundColor = dynamicColor;
+    progressBar.style.boxShadow = `0 0 10px ${dynamicColorGlow}`;
+
+    const backgroundOpacity = isDark ? 0.15 : 0.1;
+    const backgroundSecondaryOpacity = isDark ? 0.08 : 0.05;
     
-    const accentColor = dominantColor;
-    const accentLight = `rgba(${r}, ${g}, ${b}, 0.2)`;
-    const accentGlow = `rgba(${r}, ${g}, ${b}, 0.4)`;
-    
-    // Set CSS custom property for hover effects
-    document.documentElement.style.setProperty('--accent-color', accentColor);
-    document.documentElement.style.setProperty('--accent-rgb', `${r}, ${g}, ${b}`);
-    
-    progressBar.style.backgroundColor = accentColor;
-    progressBar.style.boxShadow = `0 0 10px ${accentGlow}`;
-    
-    widget.style.background = `linear-gradient(135deg, rgba(${r}, ${g}, ${b}, 0.1) 0%, rgba(${r}, ${g}, ${b}, 0.05) 100%)`;
-    widget.style.border = `1px solid ${accentLight}`;
+    widget.style.background = `linear-gradient(135deg, rgba(${r}, ${g}, ${b}, ${backgroundOpacity}) 0%, rgba(${r}, ${g}, ${b}, ${backgroundSecondaryOpacity}) 100%)`;
+    widget.style.border = `1px solid ${dynamicColorLight}`;
   }
 }
 
+function resetOgTheme() {
+  const widget = document.querySelector('.spotify-now-playing');
+  const progressBar = document.getElementById('spotify-progress-bar');
+
+  document.documentElement.style.removeProperty('--spotify-dynamic-color');
+  document.documentElement.style.removeProperty('--spotify-dynamic-rgb');
+  document.documentElement.style.removeProperty('--spotify-dynamic-light');
+  document.documentElement.style.removeProperty('--spotify-dynamic-glow');
+
+  widget.style.background = '';
+  widget.style.border = '';
+  progressBar.style.backgroundColor = '';
+  progressBar.style.boxShadow = '';
+}
+
 async function fetchSpotifyNowPlaying() {
-  try {
-    // Show loading only on first load or after error
+  try 
     if (lastTrackId === null) {
       showLoadingState();
     }
@@ -400,7 +415,6 @@ async function fetchSpotifyNowPlaying() {
       const artistName = track.artists.map(a => a.name).join(", ");
       const albumArt = track.album.images[0].url;
 
-      // Hide loading state before updating content
       hideLoadingState();
 
       document.getElementById("spotify-track-name").textContent = trackName;
@@ -408,22 +422,21 @@ async function fetchSpotifyNowPlaying() {
       
       const albumArtElement = document.getElementById("spotify-album-art");
       albumArtElement.style.backgroundImage = `url(${albumArt})`;
-      albumArtElement.className = 'spotify-album-art'; // Reset to normal class
-      
-      // Extract and apply album colors (only on track change)
+      albumArtElement.className = 'spotify-album-art';
+
       if (trackChanged) {
         try {
           const dominantColor = await extractAlbumColor(albumArt);
           applyDynamicTheme(dominantColor);
         } catch (e) {
           console.log('Color extraction failed, using default');
+          resetOgTheme();
         }
       }
 
       lastTrackId = trackId;
     }
 
-    // Always update progress and duration
     currentProgress = newProgress;
     durationMs = newDuration;
     isPlaying = playing;
@@ -463,22 +476,31 @@ async function fetchSpotifyNowPlaying() {
     document.getElementById("spotify-album-art").className = 'spotify-album-art';
     document.getElementById("spotify-progress-bar").style.width = "0%";
     document.getElementById("spotify-time-display").textContent = "0:00 / 0:00";
-    
-    // Reset to default theme
-    const progressBar = document.getElementById('spotify-progress-bar');
-    widget.style.background = '';
-    widget.style.border = '';
-    progressBar.style.backgroundColor = 'var(--accent-color, limegreen)';
-    progressBar.style.boxShadow = '';
+
+    resetOgTheme();
     
     clearInterval(progressInterval);
     lastTrackId = null;
     isPlaying = false;
-    
-    // Remove error class after animation
+
     setTimeout(() => widget.classList.remove('spotify-error'), 300);
   }
 }
+
+const themeObserver = new MutationObserver((mutations) => {
+  mutations.forEach((mutation) => {
+    if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+      if (lastTrackId && document.documentElement.style.getPropertyValue('--spotify-dynamic-color')) {
+        const currentColor = document.documentElement.style.getPropertyValue('--spotify-dynamic-color');
+        if (currentColor) {
+          applyDynamicTheme(currentColor);
+        }
+      }
+    }
+  });
+});
+
+themeObserver.observe(document.body, { attributes: true, attributeFilter: ['data-theme'] });
 
 document.addEventListener('DOMContentLoaded', () => {
   const widget = document.querySelector('.spotify-now-playing');
