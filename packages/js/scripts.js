@@ -182,9 +182,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- Slideshow Logic ---
   let slideIndex = 1;
   const projectDescriptions = [
-    "RippleKit, a CSS Framework with custom Elements.",
-    "Polyx, is a programming language built with JavaScript + Rust in mind.",
-    "Project: Mountain, a PPTOS, focusing and relying heavily on WinAPI (Archived until October)",
+    "RippleKit, a CSS Framework with custom elements.",
+    "Project: Mountain, a PPTOS, focusing on WinAPI (Archived until October)",
+    "Poly, A programming language, with new elements, to change the world ahh type stuff.",
   ];
   showSlides(slideIndex);
 
