@@ -20,20 +20,20 @@
   --border-radius-large: 16px;
   --border-radius-round: 50%;
 
-  /* === Purple Scale: Light Theme === */
-  --grey-50: #faf5ff;
-  --grey-100: #f3e8ff;
-  --grey-200: #e9d5ff;
-  --grey-300: #d8b4fe;
-  --grey-400: #c084fc;
-  --grey-500: #a855f7;
-  --grey-600: #9333ea;
-  --grey-700: #7e22ce;
-  --grey-800: #6b21a8;
-  --grey-900: #581c87;
-  --grey-950: #3b0764;
+  /* === Sky Scale: Light Theme === */
+  --grey-50: #f0f9ff;
+  --grey-100: #e0f2fe;
+  --grey-200: #bae6fd;
+  --grey-300: #7dd3fc;
+  --grey-400: #38bdf8;
+  --grey-500: #0ea5e9;
+  --grey-600: #0284c7;
+  --grey-700: #0369a1;
+  --grey-800: #075985;
+  --grey-900: #0c4a6e;
+  --grey-950: #082f49;
 
-  --text-color-light: #581c87;
+  --text-color-light: #0c4a6e;
   --bg-color-light: var(--grey-50);
   --navbar-bg-light: rgba(255, 255, 255, 0.85);
   --card-bg-light: var(--grey-100);
@@ -41,19 +41,19 @@
   --grid-color-light: var(--grey-200);
   --scrollbar-thumb-light: var(--grey-400);
   --scrollbar-track-light: var(--grey-100);
-  --selection-bg-light: #581c87;
+  --selection-bg-light: #0c4a6e;
   --selection-text-light: #fff;
-  --shadow-color-light: rgba(88, 28, 135, 0.2);
+  --shadow-color-light: rgba(14, 165, 233, 0.2);
   --button-shadow-color-light: var(--grey-300);
   --circle-color-light-1: var(--grey-300);
   --circle-color-light-2: var(--grey-400);
   --shadow-offset: 5px;
   --hover-shift: 2px;
 
-  /* === Purple Scale: Dark Theme === */
+  /* === Sky Scale: Dark Theme === */
   --text-color-dark: var(--grey-50);
-  --bg-color-dark: #3b0764;
-  --navbar-bg-dark: rgba(59, 7, 100, 0.85);
+  --bg-color-dark: #082f49;
+  --navbar-bg-dark: rgba(8, 47, 73, 0.85);
   --card-bg-dark: var(--grey-900);
   --accent-color-dark: var(--grey-500);
   --grid-color-dark: var(--grey-800);
