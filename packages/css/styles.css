@@ -944,7 +944,7 @@ body[data-theme="light"] .dot {
 
 .active,
 .dot:hover {
-  background-color: var(--accent-color);
+  background-color: var(--grey-900);
 }
 
 .fade {
