@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Text to SVG Generator</title>
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+      <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+      <link href='styles.css' rel='stylesheet'>
+   </head>
+   <body class="bg-light">
+      <div class="container py-4">
+         <a href="https://rokybeast.github.io/tools/" class="btn btn-secondary mb-4 d-inline-block">← Back</a>
+         <div class="card shadow border-0 p-4">
+            <div class="text-center mb-4">
+               <h1 class="mb-3">
+                  <i class='bx bx-magic bx-icon'></i>
+                  Text to SVG Generator
+               </h1>
+            </div>
+            <div class="row g-4">
+               <div class="col-lg-4">
+                  <div class="card mb-3">
+                     <div class="card-body">
+                        <h5 class="section-title">
+                           <i class='bx bx-edit'></i>
+                           Text Content
+                        </h5>
+                        <div class="mb-3">
+                           <textarea id="textInput" class="form-control" rows="3" placeholder="Enter your text here...">Text..</textarea>
+                        </div>
+                        <div class="mb-3">
+                           <label class="form-label">Font Size (px)</label>
+                           <input type="range" id="fontSize" class="form-range" min="12" max="200" value="48">
+                           <div class="text-muted small">Current: <span id="fontSizeValue">48</span>px</div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="card mb-3">
+                     <div class="card-body">
+                        <h5 class="section-title">
+                           <i class='bx bx-font'></i>
+                           Font Settings
+                        </h5>
+                        <div class="mb-3">
+                           <label class="form-label">Font Family</label>
+                           <input type="text" id="fontFamily" class="form-control" value="Arial" placeholder="e.g., Arial, Roboto, Pacifico">
+                           <div id="fontSuggestions" class="mt-2 d-flex flex-wrap"></div>
+                        </div>
+                        <div class="mb-3">
+                           <label class="form-label">Google Font</label>
+                           <div class="input-group">
+                              <input type="text" id="googleFont" class="form-control" placeholder="e.g., Pacifico, Lobster, Dancing Script">
+                              <button id="loadGoogleFont" class="btn btn-primary">
+                              <i class='bx bx-download'></i> Load
+                              </button>
+                           </div>
+                        </div>
+                        <div class="mb-3">
+                           <label class="form-label">Font Style</label>
+                           <select id="fontStyle" class="form-select">
+                              <option value="normal">Regular</option>
+                              <option value="bold">Bold</option>
+                              <option value="italic">Italic</option>
+                              <option value="bold italic">Bold Italic</option>
+                           </select>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="card mb-3">
+                     <div class="card-body">
+                        <h5 class="section-title">
+                           <i class='bx bx-upload'></i>
+                           Custom Font
+                        </h5>
+                        <div class="upload-area" onclick="document.getElementById('fontFile').click()">
+                           <i class='bx bx-cloud-upload bx-lg mb-2'></i>
+                           <div>Click to upload TTF/WOFF font</div>
+                           <input type="file" id="fontFile" accept=".ttf,.woff,.woff2,.otf" style="display: none;">
+                        </div>
+                        <div id="uploadStatus" class="mt-2 small"></div>
+                     </div>
+                  </div>
+                  <div class="card mb-3">
+                     <div class="card-body">
+                        <h5 class="section-title">
+                           <i class='bx bx-palette'></i>
+                           Colors & Fill
+                        </h5>
+                        <div class="mb-3">
+                           <label class="form-label">Fill Type</label>
+                           <select id="fillType" class="form-select">
+                              <option value="solid">Solid Color</option>
+                              <option value="linear">Linear Gradient</option>
+                              <option value="radial">Radial Gradient</option>
+                           </select>
+                        </div>
+                        <div class="row">
+                           <div class="col-6">
+                              <label class="form-label">Color 1</label>
+                              <input type="color" id="color1" class="form-control p-1" value="#6366f1">
+                           </div>
+                           <div class="col-6">
+                              <label class="form-label">Color 2</label>
+                              <input type="color" id="color2" class="form-control p-1" value="#8b5cf6">
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="card mb-3">
+                     <div class="card-body">
+                        <h5 class="section-title">
+                           <i class='bx bx-magic'></i>
+                           Effects
+                        </h5>
+                        <div class="mb-3">
+                           <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="enableShadow">
+                              <label class="form-check-label" for="enableShadow">Drop Shadow</label>
+                           </div>
+                        </div>
+                        <div class="mb-3">
+                           <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="enableStroke">
+                              <label class="form-check-label" for="enableStroke">Text Outline</label>
+                           </div>
+                        </div>
+                        <div class="mb-3">
+                           <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="enableGlow">
+                              <label class="form-check-label" for="enableGlow">Glow Effect</label>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-lg-8">
+                  <div class="card h-100">
+                     <div class="card-body d-flex flex-column align-items-center">
+                        <h5 class="section-title justify-content-center">
+                           <i class='bx bx-show'></i>
+                           Live Preview
+                        </h5>
+                        <canvas id="textCanvas" width="800" height="300"></canvas>
+                        <div class="d-grid gap-2 d-md-flex justify-content-center mt-4">
+                           <button id="downloadPNG" class="btn btn-success px-4 py-2">
+                           <i class='bx bx-download me-2'></i>
+                           Download PNG
+                           </button>
+                           <button id="downloadSVG" class="btn btn-success px-4 py-2">
+                           <i class='bx bx-download me-2'></i>
+                           Download SVG
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+      <script src="script.js"></script>
+   </body>
+</html>
