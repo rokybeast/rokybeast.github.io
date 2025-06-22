@@ -496,5 +496,5 @@ fetchSpotifyNowPlaying();
 
 // Fetch every 10 seconds for real-time updates
 clearInterval(fetchInterval);
-fetchInterval = setInterval(fetchSpotifyNowPlaying, 10000);
+fetchInterval = setInterval(fetchSpotifyNowPlaying, 2500);
 });
