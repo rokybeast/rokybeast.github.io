@@ -48,15 +48,26 @@ header {
 	transition: border-color 0.3s ease;
 }
 
-div .logo {
+.logo {
 	font-family: 'HelveticaNeueLT W1G 93 BlkEx', monospace;
 	font-size: 1.2rem;
 	font-weight: bold;
 	letter-spacing: 1px;
+	text-decoration: none;
+	color: #000;
 }
 
-div .logo:hover{
-	color: #6610f2;
+.logo.dark {
+	font-family: 'HelveticaNeueLT W1G 93 BlkEx', monospace;
+	font-size: 1.2rem;
+	font-weight: bold;
+	letter-spacing: 1px;
+	text-decoration: none;
+	color: #fff;
+}
+
+.logo:hover{
+	color: #6F4E37;
 }
 
 nav {
