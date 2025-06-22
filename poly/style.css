@@ -1,73 +1,40 @@
-@font-face {
-  font-family: "HelveticaNeueLT W1G 93 BlkEx";
-  src: url("../packages/fonts/Logo_HV.woff2") format("woff2"),
-    url("../packages/fonts/Logo_HV.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
-:root {
-	--bg: #ffffff;
-	--fg: #111827;
-	--border-color: #e5e7eb;
-	--pre-bg: #f9fafb;
-}
-
-body.dark {
-	--bg: #000000;
-	--fg: #ffffff;
-	--border-color: #374151;
-	--pre-bg: #1f2937;
-}
-
-body {
-	font-family: 'Space Grotesk', sans-serif;
-	background-color: var(--bg);
-	color: var(--fg);
-	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
-	overflow-x: hidden;
-	transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-header {
-	width: 100%;
-	padding: 1rem 2rem;
-	border-bottom: 1px solid var(--border-color);
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	font-weight: 300;
-	transition: border-color 0.3s ease;
-}
-
-.logo {
-	font-family: 'HelveticaNeueLT W1G 93 BlkEx', monospace;
-	font-size: 1.2rem;
-	font-weight: bold;
-	letter-spacing: 1px;
-	text-decoration: none;
-	color: #000;
-}
-
-.logo.dark {
-	font-family: 'HelveticaNeueLT W1G 93 BlkEx', monospace;
-	font-size: 1.2rem;
-	font-weight: bold;
-	letter-spacing: 1px;
-	text-decoration: none;
+::selection {
+	background-color: #252D79;
 	color: #fff;
 }
 
-.logo:hover{
+@font-face {
+	font-family: "HelveticaNeueLT W1G 93 BlkEx";
+	src: url("../packages/fonts/Logo_HV.woff2") format("woff2"),
+	     url("../packages/fonts/Logo_HV.woff") format("woff");
+	font-weight: normal;
+	font-style: normal;
+}
+
+.logo {
+	font-family: "HelveticaNeueLT W1G 93 BlkEx", sans-serif;
+	font-size: 1.2rem;
+	font-weight: bold;
+	letter-spacing: 1px;
+	text-decoration: none;
+	color: var(--fg);
+	transition: color 0.3s ease;
+}
+
+body.dark .logo {
+	color: #fff;
+}
+
+.logo:hover {
 	color: #6F4E37;
+	transition: color 0.2s ease;
 }
 
 nav {
@@ -93,7 +60,7 @@ nav a::after {
 	width: 0;
 	height: 1px;
 	background-color: var(--fg);
-	transition: width 0.3s ease;
+	transition: width 0.3s ease, background-color 0.3s ease;
 }
 
 nav a:hover::after {
