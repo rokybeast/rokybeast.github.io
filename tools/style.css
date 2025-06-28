@@ -1,0 +1,84 @@
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: #f8f9fa;
+}
+
+.header {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: white;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+    border-radius: 0 0 20px 20px;
+}
+
+.category-badge {
+    font-size: 0.75rem;
+    padding: 0.35em 0.65em;
+    border-radius: 4px;
+    color: white;
+}
+
+.sort-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    color: #6c757d;
+}
+
+.sort-btn:hover {
+    color: #0d6efd;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(13, 110, 253, 0.05);
+}
+
+.active-filters {
+    background-color: #e9ecef;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.filter-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 0.9rem;
+    border-radius: 20px;
+    font-weight: 500;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.filter-badge .btn-close {
+    margin-left: 0.5rem;
+    font-size: 0.7em;
+}
+
+.stats-bar {
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.stats-item {
+    text-align: center;
+}
+
+.stats-item i {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.tool-link {
+    min-width: 140px;
+}
+
+.table th {
+    background-color: #f1f3ff;
+}
