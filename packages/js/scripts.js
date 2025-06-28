@@ -35,6 +35,11 @@ document.addEventListener("DOMContentLoaded", () => {
       srcDark: "https://api.iconify.design/mdi/microsoft-powerpoint.svg?color=%23D24726",
     },
     {
+      name: "Poly",
+      srcLight: "../poly/assets/poly_svg.svg",
+      srcDark: "../poly/assets/poly_svg.svg",
+    },
+    {
       name: "React",
       srcLight: "https://cdn.simpleicons.org/react",
       srcDark: "https://cdn.simpleicons.org/react",
