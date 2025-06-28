@@ -219,7 +219,7 @@ async function parseFile(file) {
       for (const exp of result.exports) {
          const row = document.createElement('tr');
          row.innerHTML = `
-            <td><span class="badge bg-primary">${exp.Ordinal}</span></td>
+            <td><span class="badge bg-success">${exp.Ordinal}</span></td>
             <td><code>${exp.Name || '<em>unnamed</em>'}</code></td>
             <td><span class="hex-value">0x${exp.RVA.toString(16).toUpperCase().padStart(8, '0')}</span></td>
             <td>${exp.Hint}</td>
