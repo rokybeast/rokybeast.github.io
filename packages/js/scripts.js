@@ -503,3 +503,7 @@ fetchSpotifyNowPlaying();
 clearInterval(fetchInterval);
 fetchInterval = setInterval(fetchSpotifyNowPlaying, 2500);
 });
+
+document.getElementById('closeAlert').addEventListener('click', function() {
+  document.getElementById('alertBar').classList.add('hide');
+});
