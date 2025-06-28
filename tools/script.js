@@ -20,8 +20,6 @@ function initializeCategories() {
    });
 
    const categoryMenu = document.getElementById('categoryDropdownMenu');
-   const allCategoriesItem = categoryMenu.querySelector('li a[onclick*="all"]');
-
    const existingItems = categoryMenu.querySelectorAll('li:not(:first-child)');
    existingItems.forEach(item => item.remove());
 
