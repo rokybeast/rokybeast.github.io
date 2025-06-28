@@ -1,0 +1,149 @@
+/* PolyScript Syntax Highlighting */
+code[class*="language-"] {
+    color: #383a42;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: #a0a1a7;
+    font-style: italic;
+}
+
+.token.punctuation {
+    color: #383a42;
+}
+
+.token.keyword,
+.token.selector,
+.token.tag {
+    color: #a626a4;
+    font-weight: bold;
+}
+
+.token.property,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+    color: #c18401;
+}
+
+.token.string,
+.token.char,
+.token.attr-name,
+.token.builtin,
+.token.inserted {
+    color: #50a14f;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+    color: #383a42;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+    color: #4078f2;
+    font-weight: 500;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+    color: #c18401;
+}
+
+.token.decorator {
+    color: #e45649;
+    font-weight: bold;
+}
+
+.token.modifier {
+    color: #986801;
+    font-weight: bold;
+}
+
+.token.flag {
+    color: #50a14f;
+    font-style: italic;
+}
+
+/* Dark theme syntax highlighting */
+body.dark code[class*="language-"] {
+    color: #abb2bf;
+}
+
+body.dark .token.comment,
+body.dark .token.prolog,
+body.dark .token.doctype,
+body.dark .token.cdata {
+    color: #5c6370;
+}
+
+body.dark .token.punctuation {
+    color: #abb2bf;
+}
+
+body.dark .token.keyword,
+body.dark .token.selector,
+body.dark .token.tag {
+    color: #c678dd;
+}
+
+body.dark .token.property,
+body.dark .token.boolean,
+body.dark .token.number,
+body.dark .token.constant,
+body.dark .token.symbol,
+body.dark .token.deleted {
+    color: #d19a66;
+}
+
+body.dark .token.string,
+body.dark .token.char,
+body.dark .token.attr-name,
+body.dark .token.builtin,
+body.dark .token.inserted {
+    color: #98c379;
+}
+
+body.dark .token.operator,
+body.dark .token.entity,
+body.dark .token.url,
+body.dark .language-css .token.string,
+body.dark .style .token.string {
+    color: #abb2bf;
+}
+
+body.dark .token.atrule,
+body.dark .token.attr-value,
+body.dark .token.function,
+body.dark .token.class-name {
+    color: #61afef;
+}
+
+body.dark .token.regex,
+body.dark .token.important,
+body.dark .token.variable {
+    color: #d19a66;
+}
+
+body.dark .token.decorator {
+    color: #e06c75;
+}
+
+body.dark .token.modifier {
+    color: #e5c07b;
+}
+
+body.dark .token.flag {
+    color: #98c379;
+}
