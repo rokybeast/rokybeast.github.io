@@ -14,46 +14,124 @@
 </head>
 
 <body>
-  <div class="container mt-5">
-    <h1 class="mb-4">Tools</h1>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">Name</th>
-          <th scope="col">Description</th>
-          <th scope="col">Link</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>VBA Unlocker</td>
-          <td>Unlock VBA password protected files with detailed logs</td>
-          <td><a href="/tools/vba/vbunlock/">Go to VBUnlock</a></td>
-        </tr>
-        <tr>
-          <td>OLE Colors</td>
-          <td>Office uses OLE, whereas we use RGB/HEX, Convert them here</td>
-          <td>
-            <a href="/tools/vba/ole-tool/">Go to OLE Colors</a>
-          </td>
-        </tr>
-        <tr>
-          <td>Text to SVG</td>
-          <td>Make cool text stuff, and turn then into PNGs/SVGs</td>
-          <td>
-            <a href="/tools/other/text-to-svg/">Go to Text to SVG</a>
-          </td>
-        </tr>
-                <tr>
-          <td>DLL Viewer</td>
-          <td>Look into functions of any DLL/EXE (very useful, I know)</td>
-          <td>
-            <a href="/tools/other/dllviewer/">Go to DLL Viewer</a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="container">
+    <div class="row mb-4">
+      <div class="col-md-4 mb-3">
+        <div class="dropdown">
+          <button class="btn btn-light dropdown-toggle w-100 border text-start" type="button" id="sortDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class='bx bx-sort'></i> Sort by: Name (A-Z)
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="sortDropdown">
+            <li><a class="dropdown-item" href="#" onclick="sortTable('name', 'asc')"><i class='bx bx-sort-up'></i> Name (A-Z)</a></li>
+            <li><a class="dropdown-item" href="#" onclick="sortTable('name', 'desc')"><i class='bx bx-sort-down'></i> Name (Z-A)</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#" onclick="sortTable('description', 'asc')"><i class='bx bx-sort-up'></i> Description (A-Z)</a></li>
+            <li><a class="dropdown-item" href="#" onclick="sortTable('description', 'desc')"><i class='bx bx-sort-down'></i> Description (Z-A)</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-4 mb-3">
+        <div class="dropdown">
+          <button class="btn btn-light dropdown-toggle w-100 border text-start" type="button" id="categoryDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class='bx bx-filter'></i> Category: All Categories
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="categoryDropdown" id="categoryDropdownMenu">
+            <li><a class="dropdown-item active" href="#" onclick="filterByCategory('all')"><i class='bx bx-grid'></i> All Categories</a></li>
+            <!-- Categories will be dynamically populated -->
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-4 mb-3">
+        <div class="input-group">
+          <span class="input-group-text bg-white">
+            <i class='bx bx-search'></i>
+          </span>
+          <input type="text" class="form-control" id="searchInput" placeholder="Search tools by name or description..." onkeyup="applyFilters()">
+        </div>
+      </div>
+    </div>
+	
+    <div class="active-filters" id="activeFilters" style="display: none;">
+      <div class="d-flex flex-wrap align-items-center">
+        <span class="me-2"><strong>Active Filters:</strong></span>
+        <span id="categoryFilter" class="filter-badge" style="display: none;">
+          <i class='bx bx-category'></i>
+          <span id="categoryFilterText"></span>
+          <button type="button" class="btn-close" aria-label="Close" onclick="filterByCategory('all')"></button>
+        </span>
+        <span id="searchFilter" class="filter-badge bg-info" style="display: none;">
+          <i class='bx bx-search'></i>
+          <span id="searchFilterText"></span>
+          <button type="button" class="btn-close" aria-label="Close" onclick="clearSearch()"></button>
+        </span>
+      </div>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-hover table-striped" id="toolsTable">
+        <thead>
+          <tr>
+            <th scope="col">
+              <div class="d-flex align-items-center">
+                <span>Name</span>
+                <div class="d-flex flex-column ms-2">
+                  <button class="sort-btn" onclick="sortTable('name', 'asc')" title="Sort A-Z">
+                    <i class='bx bx-up-arrow-alt'></i>
+                  </button>
+                  <button class="sort-btn" onclick="sortTable('name', 'desc')" title="Sort Z-A">
+                    <i class='bx bx-down-arrow-alt'></i>
+                  </button>
+                </div>
+              </div>
+            </th>
+            <th scope="col">
+              <div class="d-flex align-items-center">
+                <span>Description</span>
+                <div class="d-flex flex-column ms-2">
+                  <button class="sort-btn" onclick="sortTable('description', 'asc')" title="Sort A-Z">
+                    <i class='bx bx-up-arrow-alt'></i>
+                  </button>
+                  <button class="sort-btn" onclick="sortTable('description', 'desc')" title="Sort Z-A">
+                    <i class='bx bx-down-arrow-alt'></i>
+                  </button>
+                </div>
+              </div>
+            </th>
+            <th scope="col">Category</th>
+            <th scope="col">Link</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+          <tr data-category="VBA Tools" data-color="#6f42c1">
+            <td><i class='bx bx-lock-open me-2'></i> VBA Unlocker</td>
+            <td>Unlock VBA password protected files with detailed logs</td>
+            <td><span class="category-badge" style="background-color: #6f42c1">VBA Tools</span></td>
+            <td><a href="/tools/vba/vbunlock/" class="btn btn-outline-primary btn-sm tool-link">Go to VBUnlock</a></td>
+          </tr>
+          <tr data-category="VBA Tools" data-color="#6f42c1">
+            <td><i class='bx bx-palette me-2'></i> OLE Colors</td>
+            <td>Office uses OLE, whereas we use RGB/HEX, Convert them here</td>
+            <td><span class="category-badge" style="background-color: #6f42c1">VBA Tools</span></td>
+            <td><a href="/tools/vba/ole-tool/" class="btn btn-outline-primary btn-sm tool-link">Go to OLE Colors</a></td>
+          </tr>
+          <tr data-category="Graphics" data-color="#20c997">
+            <td><i class='bx bx-text me-2'></i> Text to SVG</td>
+            <td>Make cool text stuff, and turn then into PNGs/SVGs</td>
+            <td><span class="category-badge" style="background-color: #20c997">Graphics</span></td>
+            <td><a href="/tools/other/text-to-svg/" class="btn btn-outline-primary btn-sm tool-link">Go to Text to SVG</a></td>
+          </tr>
+          <tr data-category="Windows" data-color="#fd7e14">
+            <td><i class='bx bx-file me-2'></i> DLL Viewer</td>
+            <td>Look into functions of any DLL/EXE (very useful, I know)</td>
+            <td><span class="category-badge" style="background-color: #fd7e14">Windows</span></td>
+            <td><a href="/tools/other/dllviewer/" class="btn btn-outline-primary btn-sm tool-link">Go to DLL Viewer</a></td>
+		</tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="noResults" class="alert alert-warning text-center d-none py-3" role="alert">
+      <i class='bx bx-error-circle me-2'></i> No tools found matching your search criteria. Try changing your filters.
+    </div>
   </div>
 </body>
-
 </html>
