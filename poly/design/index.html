@@ -17,21 +17,19 @@
     <header>
         <div><a class="logo" href="/poly">[!poly]</a></div>
         <nav>
-            <a href="https://rokybeast.github.io/">RokyBeast</a>
-            <a href="#">Playground</a>
-            <a href="#">About</a>
-            <a href="#">Home</a>
+            <a href="https://rokybeast.github.io/poly">Home</a>
+            <a href="https://rokybeast.github.io/poly/design">Design Language</a>
             <i class='bx bx-moon theme-toggle' id="themeToggle" title="Toggle Theme"></i>
         </nav>
     </header>
-
     <main>
         <section class="hero">
             <h1>PolyScript Language</h1>
             <p>A modern, expressive programming language designed for clarity, power, and elegant code. Explore the
                 features that make PolyScript unique.</p>
+            <center> <a href="https://rokybeast.github.io/poly/syntax" class="item-link" target="_blank">Show Full
+                    Syntax <i class="bx bx-link-external"></i></a></center>
         </section>
-
         <section class="features-grid">
             <div class="feature-card">
                 <h3><i class='bx bx-code-alt'></i> Type Safety & Modifiers</h3>
@@ -39,40 +37,33 @@
                     <code>!invisible</code>, and <code>!REQUIRE</code> for fine-grained control over your data.
                 </p>
             </div>
-
             <div class="feature-card">
                 <h3><i class='bx bx-import'></i> Advanced Import System</h3>
                 <p>Flexible imports with aliasing support. Import entire modules or specific functions with clean,
                     readable syntax.</p>
             </div>
-
             <div class="feature-card">
                 <h3><i class='bx bx-shape-triangle'></i> Fragments & Composition</h3>
                 <p>Compose functionality with fragments - a unique approach to code organization that's more flexible
                     than traditional inheritance.</p>
             </div>
-
             <div class="feature-card">
                 <h3><i class='bx bx-at'></i> Decorators & Methods</h3>
                 <p>Enhance your functions with decorators and create reusable method patterns for clean, maintainable
                     code.</p>
             </div>
-
             <div class="feature-card">
                 <h3><i class='bx bx-list-ul'></i> Smart Collections</h3>
                 <p>Arrays, tuples, and collections with position-based operations and intelligent indexing systems.</p>
             </div>
-
             <div class="feature-card">
                 <h3><i class='bx bx-time'></i> Async by Design</h3>
                 <p>Built-in async support with <code>threadTask</code> and real-time execution capabilities for modern
                     applications.</p>
             </div>
         </section>
-
         <section class="code-showcase">
             <h2>Language Features in Action</h2>
-
             <pre><code class="language-poly">// Variables with Modifiers
 Option.ExplicitVariables = true;
 new gravity as float: 9.8 !isConstant;
@@ -81,7 +72,6 @@ new apiKey as string: "secret123" !invisible;
 // Advanced Import System  
 import MathLib as 'Math';
 import { sqrt: 'SquareRoot', pow: 'Power' } from MathLib;</code></pre>
-
             <pre><code class="language-poly">// Smart Collections & Arrays
 new values as array[int];
 values.new(5 : 1);    // Insert 5 at position 1
@@ -95,7 +85,6 @@ new fruits as collection: {
 };
 write(fruits["apple"]); // Access by key
 write(fruits[3]);       // Access by position</code></pre>
-
             <pre><code class="language-poly">// Decorators and Custom Methods
 @logExecution
 public function calculate(param: int) {
@@ -115,7 +104,6 @@ new method States(){
         continue;
     }
 }</code></pre>
-
             <pre><code class="language-poly">// Fragments - Composition over Inheritance
 fragment UserProfile {
     username: string;
@@ -141,7 +129,6 @@ new UserFullProfile as fragment {
         self.displaySettings();
     }
 }</code></pre>
-
             <pre><code class="language-poly">// Pattern Matching & Control Flow
 match userInput {
     when 1: write("Option One");
@@ -153,7 +140,6 @@ match userInput {
 // Modern Operators
 new username = inputName ~> "Guest";  // Elvis operator
 new result = (score > 50) |> "Pass" : "Fail";  // Ternary</code></pre>
-
             <pre><code class="language-poly">// Async & Threading
 async function fetchUserData(userId: int): object {
     new userData as object = await apiCall("/users/" + userId);
@@ -165,7 +151,6 @@ threadTask !realTime: function processData() {
     new users as array = await fetchUserData(123);
     write("Processing complete:", users.length, "users");
 }</code></pre>
-
             <pre><code class="language-poly">// Error Handling with Context
 try {
     new score as int = read.in("Enter score: ");
@@ -178,7 +163,6 @@ try {
 }</code></pre>
         </section>
     </main>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script src='../js/poly.js'></script>
     <script src='../js/theme.js'></script>

@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PolyScript | Design Language</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href='../css/poly.css' rel='stylesheet'>
+    <link href='../css/style.css' rel='stylesheet'>
+</head>
+
+<body>
+    <header>
+        <div><a class="logo" href="/poly">[!poly]</a></div>
+        <nav>
+            <a href="https://rokybeast.github.io/poly">Home</a>
+            <a href="https://rokybeast.github.io/poly/design">Design Language</a>
+            <i class='bx bx-moon theme-toggle' id="themeToggle" title="Toggle Theme"></i>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>PolyScript Design Language</h1>
+            <p>Complete language specification and syntax reference for PolyScript - a modern, expressive programming language.</p>
+        </section>
+
+        <section class="code-showcase">
+            <pre><code class="language-poly">// =====================================
+// POLYSCRIPT LANGUAGE SPECIFICATION
+// =====================================
+
+Option.ExplicitVariables = true;  // Enforces explicit variable declarations.
+write("PolyScript initialized.");
+
+// ---------------------------
+// 1. VARIABLES & MODIFIERS
+// ---------------------------
+// Modifiers: !isConstant, !notStrict, !invisible, !REQUIRE, etc.
+new gravity as float: 9.8 !isConstant;
+new password as string: "SecurePass" !invisible;
+gravity = 10.2;  // Error: ModifierError (!isConstant)
+
+// ---------------------------
+// 2. IMPORTS & ALIASING
+// ---------------------------
+import MathLib as 'Math';
+import { sqrt: 'SquareRoot', pow: 'Power' } from MathLib;
+
+// ---------------------------
+// 3. INPUT SYSTEM
+// ---------------------------
+new age as int: read.in(!type: int -> "Enter your age: ");
+read.in("What's your name: ");
+
+// ---------------------------
+// 4. TYPE DEFINITIONS & GENERICS
+// ---------------------------
+new EncryptedString = type[string];
+new secret as EncryptedString: "abc123";
+
+new method encrytion(type[EncryptedString]){
+    for any EncryptedString {
+        value.toString(saltedValue);
+        saltedValue == "salt__", saltedValue, "__salt";
+    }
+}
+
+type Box[T] = array[T];
+new numbers as Box[int]: [1, 2, 3];
+
+// ---------------------------
+// 5. ARRAYS & TUPLES (doesn't require position mapping, even `values.new(8);` work.)
+// ---------------------------
+new values as array[int];
+values.new(5 : 1); // new '5' at position 1: [5]
+values.new(90 : 0); // new '90' at position 0:  [90, 5]
+values.new(2 : 2); // new '2' at position 2:  [90, 5, 2]
+values.delete(5 : any);
+
+new tupleExample as tuple;
+tupleExample.new("Data": 1);
+tupleExample.new(42 : 2);
+
+// ---------------------------
+// 6. COLLECTIONS
+// ---------------------------
+new fruits as collection: {
+    "apple": 1,
+    "banana": 2,
+    "kiwi": 3
+};
+write(fruits["apple"]);
+write(fruits[3]);
+
+// ---------------------------
+// 7. CONDITIONALS
+// ---------------------------
+new x as int: 5;
+new y as int: 10;
+
+if (x > y) {
+    write("x is greater.");
+} elseif (x == y) {
+    write("x equals y.");
+} else {
+    write("y is greater.");
+}
+
+// ---------------------------
+// 8. ERROR HANDLING
+// ---------------------------
+try {
+    new score as int = read.in("Enter score: ");
+    if (score < 0) throw new RangeError("Score cannot be negative.");
+} catch (err -> e) {
+    write("Error:", e.message);
+} finally {
+    write("Input handling complete.");
+}
+
+if (x < 0) {
+    Error.Raise("Negative value.", 400, "NEG_VALUE_ERR");
+}
+
+// ---------------------------
+// 9. FUNCTIONS & EXPORTS
+// ---------------------------
+public function add(a, b) {
+    return a + b;
+}
+
+export function legacySupport() !flags __CppExp {
+    add(1 + 1); // Just Say, legacy didn't support parameters
+}
+
+export project !flags { // exports entire project with selected functions
+    add() -> __NoPortback __CppExp;
+    subtract() -> __NoPortback __CppExp __CustomFlag;
+    doNothing() -> __Empty;
+    // add more functions here...
+}
+
+export project; // Exports the entire thing
+
+// ---------------------------
+// 10. DECORATORS
+// ---------------------------
+@logExecution
+public function calculate(param: int) {
+    return param * 2;
+}
+
+// Custom Decorators
+new alert as decorator;
+
+@alert // A decorator that sets success if function runs without error, failure otherwise
+public function myFunc(param: int) {
+    write("Processing:", param);
+    return param * 2;
+}
+
+@alert {
+    try {
+        continue(__decorator); // Executes function with the decorator (here: flag)
+        write("[OK] Function executed successfully.");
+    } catch (err -> e) {
+        write("[FAIL] Function failed:", e.message);
+    }
+}
+
+// ---------------------------
+// 11. PATTERN MATCHING
+// ---------------------------
+match x {
+    when 1: write("One");
+    when int n if n > 5: write("Greater than five.");
+    else: write("Other value.");
+}
+
+// ---------------------------
+// 12. LOOPS
+// ---------------------------
+loop (i: 0; i < 5 i += 1) {
+    write("Iteration:", i);
+    !break (i == 3) -> break;
+}
+
+new data as array: ["A", "B", "C"];
+loop item in data {
+    write("Item:", item);
+}
+
+// ---------------------------
+// 13. ASYNC TASKS
+// ---------------------------
+async function fetchData(url: string): string !toString {
+    new resData as object: internetService.service(GET, url);
+    await sleep(1000);
+    return "Data from " + url;
+}
+
+threadTask !realTime: function main() {
+    new result as string = await fetchData("https://example.com");
+    write(result);
+}
+
+// ---------------------------
+// 14. CLASSES & INHERITANCE
+// ---------------------------
+class Vehicle {
+    model: string;
+    year: int;
+
+    function display() {
+        write("Model:", self.model, "Year:", self.year);
+    }
+}
+
+class ElectricVehicle inherits Vehicle {
+    batteryRange: int;
+}
+
+new car as Vehicle: new Vehicle("Sedan", 2022);
+car.display();
+
+// ---------------------------
+// 15. INTERFACES
+// ---------------------------
+interface Drivable {
+    function drive(speed: int);
+    function stop();
+}
+
+class Bike takes Drivable {
+    function drive(speed: int) {
+        write("Driving at", speed);
+    }
+    function stop() {
+        write("Stopped.");
+    }
+}
+
+// ---------------------------
+// 16. FRAGMENTS
+// ---------------------------
+fragment UserProfile {
+    username: string;
+    email: string;
+
+    function displayProfile() {
+        write("User:", username);
+        write("Email:", email);
+    }
+}
+
+fragment UserSettings {
+    theme: string;
+    notifications: boolean;
+
+    function displaySettings() {
+        write("Theme:", theme);
+        write("Notifications:", notifications);
+    }
+}
+
+// Create base profile
+new user as UserProfile;
+user.username = "Sajid";
+user.email = "sajid@example.com";
+
+// Extend profile with settings
+new UserFullProfile as fragment {
+    !Append UserProfile;
+    !Append UserSettings;
+
+    function displayFullProfile() {
+        self.displayProfile();
+        self.displaySettings();
+    }
+}
+
+new fullUser as UserFullProfile;
+fullUser.username = "Sajid";
+fullUser.email = "sajid@example.com";
+fullUser.theme = "Dark";
+fullUser.notifications = true;
+
+fullUser.displayFullProfile();
+
+// ---------------------------
+// 17. METHODS
+// ---------------------------
+new btnId as gui.button;
+new method States(){
+    hoverState(apply): { // (params)
+        // How do we call it?
+        gui.cursor.onSelObject();
+    } -> {
+        // What do do if called?
+        self.color.darken(+5);
+    }
+    
+    clickState(apply): {
+        gui.cursor.onSelObject(isClicked);
+    } -> {
+        // What do do if called?
+        // Just do whatever was being done (continue)
+        continue;
+    }
+}
+
+// Calling it:
+States.hoverState(btnId -> {
+    // Modifications if needed.
+    with self.hoverState;
+    if (tooltipSetting == true) {
+        self.tooltip.show("Modified Method");
+    }
+});
+
+// ---------------------------
+// 18. ELVIS OPERATOR
+// ---------------------------
+new username = inputName ~> "Guest";
+
+// ---------------------------
+// 19. TERNARY OPERATOR (IIf)
+// ---------------------------
+new result = (score > 50) |> "Pass" : "Fail";
+
+// ---------------------------
+// 20. ABSTRACT VARIABLES
+// ---------------------------
+new dynamicValue as AbstractVariable(Object) !setAlias -> Dynamic;
+
+// ---------------------------
+// 21. FLAGS (CUSTOM)
+// ---------------------------
+new Empty as flag; // Case Sensitive
+
+__Empty(){
+    return 0;
+}
+
+// REQUIRED FEATURES
+
+// ---------------------------
+// LOGICAL & COMPARISON OPERATORS
+// ---------------------------
+
+// Assignment
+=    // assigns a value (new x as string;) (x = "ts";)
+: // also (new x as string: "ts";)
+
+// Equality & Identity
+==   // checks value equality
+===  // checks value and type equality (strict)
+!=   // not equal (value)
+!==  // not equal (strict)
+
+// Equality & Inequality
+==   // equals
+!=   // not equals
+
+// Comparison
+<    // less than
+>    // greater than
+<=   // less than or equal
+>=   // greater than or equal
+
+// Logical
+&& and   // and
+|| or // or
+! not  // not
+
+// Example usage
+new x as int: 5;
+new y as int: 5;
+new z as string: "5";
+
+if (x == y) { write("Same value."); }
+if (x === y) { write("Same value & type."); }
+if (x == z) { write("Same value, different type."); }
+if (x != z) { write("Not same type."); }
+if (x > 5 and y < 10) {
+    write("Both conditions met.");
+}
+
+if (not status == "active")) {
+    write("Status is not active.");
+}
+
+// Extra Language Features:
+// Functions for data types:
+/*
+    - toString(), isString()
+    - toInt(), isInt(type of int, i8/u8 (if needed))
+    - isBool(), (checks 1/0 value, not true/false)
+    - toChar(pos) (will take the selected character's position and assign it, if not provided, takes the first char)
+*/
+// Examples:
+new Test as int: 24;
+Test.toString();
+Test.value = 'ABCD'
+Test.toChar(3); // Selects 'C'
+Test.isBool(!isTrue { write("YAY"); } else { write("NAWW"); });
+Test.toInt(u8 !fallback: !default);
+
+// END OF SPEC</code></pre>
+        </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src='../js/poly.js'></script>
+    <script src='../js/theme.js'></script>
+</body>
+</html>
