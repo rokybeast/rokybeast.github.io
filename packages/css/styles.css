@@ -268,6 +268,8 @@ body[data-theme="dark"] .item-link:hover {
   max-width: 1200px;
   margin: 0 auto;
   gap: 1rem;
+  font-weight:600;
+  font-size: 17px;
 }
 
 .alert-bar-message {
@@ -284,14 +286,13 @@ body[data-theme="dark"] .item-link:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 4px;
+  border-radius: var(--border-radius-round);
   transition: all 0.2s ease;
   flex-shrink: 0;
 }
 
 .alert-bar-close:hover {
   background-color: rgba(255, 255, 255, 0.1);
-  transform: scale(1.1);
 }
 
 .alert-bar-close:active {
