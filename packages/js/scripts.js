@@ -36,8 +36,8 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       name: "Poly",
-      srcLight: "../poly/assets/poly_svg.svg",
-      srcDark: "../poly/assets/poly_svg.svg",
+      srcLight: "../poly/assets/poly_svg_mod.svg",
+      srcDark: "../poly/assets/poly_svg_mod.svg",
     },
     {
       name: "React",
