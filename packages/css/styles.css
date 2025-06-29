@@ -247,12 +247,12 @@ body[data-theme="dark"] .item-link:hover {
   box-shadow: 0 2px 4px rgba(0, 56, 209, 0.2);
 }
 
-.alert-bar a{
+.alert-bar .alert-link{
   text-decoration: none;
   color: #fff;
 }
 
-.alert-bar a:hover{
+.alert-bar .alert-link:hover{
   text-decoration: underline;
 }
 
