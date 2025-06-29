@@ -236,7 +236,7 @@ body[data-theme="dark"] .item-link:hover {
   right: 0;
   background-color: #0038d1;
   color: white;
-  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Space Grotesk';
   font-weight: 400;
   font-size: 14px;
   line-height: 1.4;
