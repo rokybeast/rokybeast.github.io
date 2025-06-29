@@ -20,6 +20,7 @@
   --border-radius-medium: 8px;
   --border-radius-large: 16px;
   --border-radius-round: 50%;
+  --alert-bar-height: 20px;
 
   /* === Grey Scale: Light Theme === */
   --grey-50: #f9f9f9;
