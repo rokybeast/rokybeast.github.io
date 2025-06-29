@@ -247,6 +247,15 @@ body[data-theme="dark"] .item-link:hover {
   box-shadow: 0 2px 4px rgba(0, 56, 209, 0.2);
 }
 
+.alert-bar a{
+  text-decoration: none;
+  color: #fff;
+}
+
+.alert-bar a:hover{
+  text-decoration: underline;
+}
+
 .alert-bar.closing {
   transform: translateY(-100%);
 }
