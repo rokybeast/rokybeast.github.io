@@ -230,27 +230,67 @@ body[data-theme="dark"] .item-link:hover {
 
 /* === Alert System (if needed) === */
 .alert-bar {
-	width: 100%;
-	background-color: #0038d1;
-	color: #fff;
-	font-size: 14px;
-	padding: 6px 16px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-weight: 400;
-	position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #0038d1;
+  color: white;
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.4;
+  z-index: 9999;
+  transform: translateY(0);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 4px rgba(0, 56, 209, 0.2);
 }
 
-.alert-bar .close-alert {
-	position: absolute;
-	right: 16px;
-	cursor: pointer;
-	font-size: 18px;
+.alert-bar.closing {
+  transform: translateY(-100%);
 }
 
-.alert-bar.hide {
-	display: none;
+.alert-bar-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 1rem;
+}
+
+.alert-bar-message {
+  flex: 1;
+  text-align: center;
+}
+
+.alert-bar-close {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.alert-bar-close:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.1);
+}
+
+.alert-bar-close:active {
+  transform: scale(0.95);
+}
+
+.alert-bar-close i {
+  font-size: 18px;
+  line-height: 1;
 }
 
 /* === Navbar === */
@@ -557,24 +597,36 @@ h2 {
 }
 
 @keyframes pulse {
-  0% { opacity: 1; }
-  50% { opacity: 0.5; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 .spotify-skeleton {
-  background: linear-gradient(90deg, 
-    rgba(255, 255, 255, 0.1) 25%, 
-    rgba(255, 255, 255, 0.2) 50%, 
-    rgba(255, 255, 255, 0.1) 75%
-  );
+  background: linear-gradient(90deg,
+      rgba(255, 255, 255, 0.1) 25%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0.1) 75%);
   background-size: 200% 100%;
   animation: shimmer 2s infinite;
 }
 
 @keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
 }
 
 .spotify-track-name-skeleton {
@@ -631,8 +683,13 @@ h2 {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Fade in animation for content */
@@ -641,8 +698,15 @@ h2 {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Error state styling */
@@ -656,7 +720,7 @@ h2 {
   .spotify-now-playing:hover {
     transform: none;
   }
-  
+
   .spotify-progress-container:hover {
     height: 4px;
   }
@@ -1299,5 +1363,39 @@ body[data-theme="dark"] .to-top-btn {
 @media (max-width: 200px) {
   .logo-text {
     font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .alert-bar-content {
+    padding: 10px 16px;
+    gap: 0.75rem;
+  }
+
+  .alert-bar {
+    font-size: 13px;
+  }
+
+  .alert-bar-message {
+    text-align: left;
+  }
+
+  body.alert-bar-active {
+    --alert-bar-height: 44px;
+  }
+}
+
+@media (max-width: 480px) {
+  .alert-bar-content {
+    padding: 8px 12px;
+    gap: 0.5rem;
+  }
+
+  .alert-bar {
+    font-size: 12px;
+  }
+
+  body.alert-bar-active {
+    --alert-bar-height: 40px;
   }
 }

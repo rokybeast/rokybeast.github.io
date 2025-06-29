@@ -18,12 +18,8 @@
   <link id="favicon_dark" rel="icon" href="./assets/favicon/favicon_dark.png" type="image/x-icon" />
 </head>
 
-<body data-theme="light">
+<body data-theme="light" class="alert-bar-active">
   <div class="grid-background"></div>
-    <div class="alert-bar" id="alertBar">
-    <span>Poly is live: https://rokybeast.github.io/poly/</span>
-    <i class='bx bx-x close-alert' id="closeAlert"></i>
-  </div>
   <nav id="navbar">
     <div class="nav-logo">
       <a href="#welcome">[r]</a>
@@ -193,7 +189,16 @@
     </div>
     <p class="copyright">© RokyBeast 2025-26</p>
   </footer>
-
+  <div class="alert-bar" id="alertBar">
+    <div class="alert-bar-content">
+      <div class="alert-bar-message">
+        Poly is now installable (no): https://rokybeast.github.io/poly/
+      </div>
+      <button class="alert-bar-close" id="alertBarClose" aria-label="Close alert">
+        <i class='bx bx-x'></i>
+      </button>
+    </div>
+  </div>
   <button id="to-top-btn" class="contact-button to-top-btn" title="Back to Top">
     <i class="bx bx-arrow-to-top"></i>
   </button>

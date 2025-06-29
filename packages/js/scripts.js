@@ -504,6 +504,42 @@ clearInterval(fetchInterval);
 fetchInterval = setInterval(fetchSpotifyNowPlaying, 2500);
 });
 
-document.getElementById('closeAlert').addEventListener('click', function() {
-  document.getElementById('alertBar').classList.add('hide');
-});
+(function () {
+   const alertBar = document.getElementById('alertBar');
+   const closeBtn = document.getElementById('alertBarClose');
+   const body = document.body;
+
+   if (!alertBar || !closeBtn) return;
+
+   function setAlertBarHeight() {
+      const height = alertBar.offsetHeight;
+      body.style.setProperty('--alert-bar-height', height + 'px');
+   }
+
+   setAlertBarHeight();
+
+   let resizeTimeout;
+   window.addEventListener('resize', function () {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(setAlertBarHeight, 100);
+   });
+
+   closeBtn.addEventListener('click', function () {
+      body.classList.add('alert-bar-closing');
+      body.classList.remove('alert-bar-active');
+      alertBar.classList.add('closing');
+
+      setTimeout(function () {
+         if (alertBar.parentNode) {
+            alertBar.parentNode.removeChild(alertBar);
+         }
+      }, 300);
+   });
+
+   closeBtn.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+         e.preventDefault();
+         closeBtn.click();
+      }
+   });
+})();
