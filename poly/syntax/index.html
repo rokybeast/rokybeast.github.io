@@ -1,37 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>PolyScript | Design Language</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+            rel="stylesheet"
+        />
+        <link href="../css/poly.css" rel="stylesheet" />
+        <link href="../css/style.css" rel="stylesheet" />
+    </head>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PolyScript | Design Language</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link href='../css/poly.css' rel='stylesheet'>
-    <link href='../css/style.css' rel='stylesheet'>
-</head>
+    <body>
+        <header>
+            <div><a class="logo" href="/poly">[!]</a></div>
+            <nav>
+                <a href="https://rokybeast.github.io/poly">Home</a>
+                <a href="https://rokybeast.github.io/poly/syntax"
+                    >Complete Syntax</a
+                >
+                <a href="https://rokybeast.github.io/poly/design"
+                    >Design Language</a
+                >
+                <i
+                    class="bx bx-moon theme-toggle"
+                    id="themeToggle"
+                    title="Toggle Theme"
+                ></i>
+            </nav>
+        </header>
 
-<body>
-    <header>
-        <div><a class="logo" href="/poly">[!]</a></div>
-        <nav>
-            <a href="https://rokybeast.github.io/poly">Home</a>
-            <a href="https://rokybeast.github.io/poly/syntax">Complete Syntax</a>
-            <a href="https://rokybeast.github.io/poly/design">Design Language</a>
-            <i class='bx bx-moon theme-toggle' id="themeToggle" title="Toggle Theme"></i>
-        </nav>
-    </header>
+        <main>
+            <section class="hero">
+                <h1>PolyScript Design Language</h1>
+                <p>
+                    Complete language specification and syntax reference for
+                    PolyScript - a modern, expressive programming language.
+                </p>
+            </section>
 
-    <main>
-        <section class="hero">
-            <h1>PolyScript Design Language</h1>
-            <p>Complete language specification and syntax reference for PolyScript - a modern, expressive programming language.</p>
-        </section>
-
-        <section class="code-showcase">
-            <pre><code class="language-poly">// =====================================
+            <section class="code-showcase">
+                <pre><code class="language-poly">// =====================================
 // POLYSCRIPT LANGUAGE SPECIFICATION
 // =====================================
 
@@ -286,8 +300,8 @@ new UserFullProfile as fragment {
 }
 
 new fullUser as UserFullProfile;
-fullUser.username = "Sajid";
-fullUser.email = "sajid@example.com";
+fullUser.username = "XXX";
+fullUser.email = "XXX@example.com";
 fullUser.theme = "Dark";
 fullUser.notifications = true;
 
@@ -345,7 +359,7 @@ new dynamicValue as AbstractVariable(Object) !setAlias -> Dynamic;
 new Empty as flag; // Case Sensitive
 
 __Empty(){
-    return 0;
+    return void;
 }
 
 // REQUIRED FEATURES
@@ -413,11 +427,11 @@ Test.isBool(!isTrue { write("YAY"); } else { write("NAWW"); });
 Test.toInt(u8 !fallback: !default);
 
 // END OF SPEC</code></pre>
-        </section>
-    </main>
+            </section>
+        </main>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-    <script src='../js/poly.js'></script>
-    <script src='../js/theme.js'></script>
-</body>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="../js/poly.js"></script>
+        <script src="../js/theme.js"></script>
+    </body>
 </html>
