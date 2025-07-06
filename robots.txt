@@ -1,0 +1,6 @@
+# I'm tellin' ya, AI'll get sentient soon.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://rokybeast.github.io/sitemap.xml

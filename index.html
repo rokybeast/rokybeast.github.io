@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>rokybeast</title>
+  <link rel="stylesheet" href="./packages/css/styles.css" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet" />
+  <meta name="description" content="[rokybeast] Personal Portfolio." />
+  <meta name="author" content="RokyBeast" />
+  <meta name="robots" content="index, follow" />
+  <link id="favicon_dark" rel="icon" href="./assets/favicon/favicon_dark.png" type="image/x-icon" />
+</head>
+
+<body data-theme="light" class="alert-bar-active">
+  <div class="grid-background"></div>
+    <div class="alert-bar" id="alertBar">
+    <div class="alert-bar-content">
+      <div class="alert-bar-message">
+        Poly is now live: <a class="alert-link" href="https://rokybeast.github.io/poly">Poly</a>
+      </div>
+      <button class="alert-bar-close" id="alertBarClose" aria-label="Close alert">
+        <i class='bx bx-x'></i>
+      </button>
+    </div>
+  </div>
+  <nav id="navbar">
+    <div class="nav-logo">
+      <a href="#welcome">[r]</a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#welcome">Welcome</a></li>
+      <li><a href="#about-me">About</a></li>
+      <li><a href="#my-tools">My Tools</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#roadmap">Roadmap</a></li>
+    </ul>
+    <div class="theme-switcher">
+      <i class="bx bx-sun" id="theme-toggle-icon"></i>
+    </div>
+  </nav>
+  <section id="welcome" class="full-screen-section">
+    <div class="welcome-content">
+      <span class="logo-text">[rokybeast]</span>
+      <p style="font-weight: 100;">
+        Hi! I'm RokyBeast, your average developer, who knows stuff. Most
+        content here is filler, for now :)
+      </p>
+    </div>
+  </section>
+  <section id="spotify-widget-section">
+    <div class="spotify-now-playing">
+      <div class="spotify-album-art" id="spotify-album-art"></div>
+
+      <div class="spotify-track-info">
+        <div id="spotify-track-name">Loading...</div>
+        <div id="spotify-artist-name">...</div>
+        <div class="spotify-progress-container">
+          <div id="spotify-progress-bar"></div>
+        </div>
+        <div class="spotify-time-display" id="spotify-time-display">0:00 / 0:00</div>
+      </div>
+    </div>
+  </section>
+  <section id="about-me">
+    <h2>About Me</h2>
+    <div class="about-me-content" style="font-weight: 100;">
+      <p>
+        I'm Roky — the guy who thought naming a programming language after his headset was a flex. I live in code: Rust,
+        Python, JavaScript — building languages, breaking them, and crafting UIs that don't fry my eyes.
+      </p>
+      <p>
+        My brain runs on logic, anime, and late-night bug fixes. I’m into cryptography, custom tools, and turning “what
+        if” ideas into real builds. Outside coding, I dive into One Piece, tech rabbit holes, or overengineer random
+        tools just for fun.
+      </p>
+      <p>
+        I build for fun, for learning, and sometimes to prove I’ve leveled up. If the internet’s a playground, I’m the
+        kid building a rollercoaster out of math and duct tape.
+      </p>
+    </div>
+  </section>
+
+  <section id="my-tools">
+    <h2>My Tools</h2>
+    <div class="tools-circles-container"></div>
+    <div class="marquee-container">
+      <div class="marquee">
+        <!-- Tool logos will be dynamically generated here by script.js -->
+      </div>
+    </div>
+  </section>
+  <section id="projects">
+    <h2>My Projects</h2>
+    <div class="slideshow-container" style="font-weight: 100;">
+      <div class="slide fade">
+        <img src="https://placehold.co/800x400/383838/FFFFFF?text=Project+1" style="width: 100%" alt="RippleKit" />
+        <div class="slide-caption">RippleKit</div>
+      </div>
+      <div class="slide fade">
+        <img src="https://placehold.co/800x400/383838/FFFFFF?text=Project+2" style="width: 100%" alt="Poly" />
+        <div class="slide-caption">Poly</div>
+      </div>
+      <div class="slide fade">
+        <img src="/assets/img/ProjectMountain.png" style="width: 100%" alt="Project: Mountain" />
+        <div class="slide-caption">Project: Mountain</div>
+      </div>
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <div style="text-align: center; margin-top: 15px; font-weight: 100;">
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+    <p id="project-desc" style="text-align: center; margin: 1.5rem 0 0 0; font-size: 1.1rem; font-weight: 100;">
+      RippleKit, is a CSS Framework with custom Elements.
+    </p>
+    <br />
+    <center>
+      <p style="margin-bottom: 20px; font-weight: 100;">
+        Each of these projects have been developed with love (and many
+        errors).
+      </p>
+    </center>
+    <div class="project-buttons-container">
+      <div class="button-container">
+        <a href="https://github.com/rokybeast" target="_blank" class="button">
+          <b>@rokybeast</b> on GitHub <i class="bx bxl-github"></i>
+        </a>
+        <div class="button-shadow"></div>
+      </div>
+      <div class="button-container">
+        <a href="/tools/" target="_blank" class="button">
+          Online Tools <i class="bx bx-link-external"></i>
+        </a>
+        <div class="button-shadow"></div>
+      </div>
+    </div>
+  </section>
+  <section id="roadmap">
+    <h2>My Roadmap</h2>
+    <div class="roadmap-container">
+      <div class="roadmap-section">
+        <h3>Completed</h3>
+        <div class="roadmap-list" style="font-weight: 100;">
+          <div class="roadmap-item">
+            <h4>IOEngine</h4>
+            <p>
+              An Input and Output Engine for VBA (idk why)
+            </p>
+            <a href="https://github.com/rokybeast/IOEngine" class="item-link" target="_blank">IOEngine <i
+                class="bx bx-link-external"></i></a>
+          </div>
+          <div class="roadmap-item">
+            <h4>ColorEngine</h4>
+            <p>
+              OLE Colors to RGB or smth, with a native Win32 API Color Picker for VBA
+            </p>
+            <a href="https://github.com/rokybeast/ColorEngine" class="item-link" target="_blank">ColorEngine <i
+                class="bx bx-link-external"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="roadmap-section">
+        <h3>In Progress</h3>
+        <div class="roadmap-list" style="font-weight: 100;">
+          <div class="roadmap-item">
+            <h4>Poly/PolyScript</h4>
+            <p>
+              A Better programming language that Mr. JavaScript I guess
+            </p>
+            <a href="/poly" class="item-link" target="_blank">Poly <i class="bx bx-link-external"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+  <footer id="footer">
+    <div class="footer-links" style="font-weight: 100;">
+      <a href="https://github.com/rokybeast" target="_blank" aria-label="GitHub Profile"><i
+          class="bx bxl-github"></i></a>
+      <a href="https://x.com/RokyBeast_" target="_blank" aria-label="Twitter Profile"><i class="bx bxl-twitter"></i></a>
+      <a href="mailto:sajid.shaik1186@gmail.com" target="_blank" aria-label="Email"><i class="bx bx-at"></i></a>
+      <a href="https://discordapp.com/users/r0kyb3ast" target="_blank" aria-label="Discord"><i
+          class="bx bxl-discord-alt"></i></a>
+      <a href="https://open.spotify.com/user/ss1haigqtrb89qyvxj2iajclo" target="_blank" aria-label="Spotify"><i
+          class="bx bxl-spotify"></i></a>
+      <a href="https://github.com/rokybeast/rokybeast.github.io" target="_blank" aria-label="View Source Code"><i
+          class="bx bx-link-external"></i></a>
+    </div>
+    <p class="copyright">© RokyBeast 2025-26</p>
+  </footer>
+  <button id="to-top-btn" class="contact-button to-top-btn" title="Back to Top">
+    <i class="bx bx-arrow-to-top"></i>
+  </button>
+  <script src="./packages/js/scripts.js"></script>
+</body>
+
+</html>

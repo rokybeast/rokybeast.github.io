@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PolyScript | Language Showcase</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Space+Grotesk:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href='../css/poly.css' rel='stylesheet'>
+    <link href='../css/style.css' rel='stylesheet'>
+</head>
+
+<body>
+    <header>
+        <div><a class="logo" href="/poly">[!]</a></div>
+        <nav>
+            <a href="https://rokybeast.github.io/poly">Home</a>
+            <a href="https://rokybeast.github.io/poly/syntax">Complete Syntax</a>
+            <a href="https://rokybeast.github.io/poly/design">Design Language</a>
+            <i class='bx bx-moon theme-toggle' id="themeToggle" title="Toggle Theme"></i>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <h1>PolyScript Language</h1>
+            <p>A modern, expressive programming language designed for clarity, power, and elegant code. Explore the
+                features that make PolyScript unique.</p>
+            <br>
+            <center> <a href="https://rokybeast.github.io/poly/syntax" class="item-link" target="_blank">Show Full
+                    Syntax <i class="bx bx-link-external"></i></a></center>
+        </section>
+        <section class="features-grid">
+            <div class="feature-card">
+                <h3><i class='bx bx-code-alt'></i> Type Safety & Modifiers</h3>
+                <p>Explicit variable declarations with powerful modifiers like <code>!isConstant</code>,
+                    <code>!invisible</code>, and <code>!REQUIRE</code> for fine-grained control over your data.
+                </p>
+            </div>
+            <div class="feature-card">
+                <h3><i class='bx bx-import'></i> Advanced Import System</h3>
+                <p>Flexible imports with aliasing support. Import entire modules or specific functions with clean,
+                    readable syntax.</p>
+            </div>
+            <div class="feature-card">
+                <h3><i class='bx bx-shape-triangle'></i> Fragments & Composition</h3>
+                <p>Compose functionality with fragments - a unique approach to code organization that's more flexible
+                    than traditional inheritance.</p>
+            </div>
+            <div class="feature-card">
+                <h3><i class='bx bx-at'></i> Decorators & Methods</h3>
+                <p>Enhance your functions with decorators and create reusable method patterns for clean, maintainable
+                    code.</p>
+            </div>
+            <div class="feature-card">
+                <h3><i class='bx bx-list-ul'></i> Smart Collections</h3>
+                <p>Arrays, tuples, and collections with position-based operations and intelligent indexing systems.</p>
+            </div>
+            <div class="feature-card">
+                <h3><i class='bx bx-time'></i> Async by Design</h3>
+                <p>Built-in async support with <code>threadTask</code> and real-time execution capabilities for modern
+                    applications.</p>
+            </div>
+        </section>
+        <section class="code-showcase">
+            <h2>Language Features in Action</h2>
+            <pre><code class="language-poly">// Variables with Modifiers
+Option.ExplicitVariables = true;
+new gravity as float: 9.8 !isConstant;
+new apiKey as string: "secret123" !invisible;
+
+// Advanced Import System  
+import MathLib as 'Math';
+import { sqrt: 'SquareRoot', pow: 'Power' } from MathLib;</code></pre>
+            <pre><code class="language-poly">// Smart Collections & Arrays
+new values as array[int];
+values.new(5 : 1);    // Insert 5 at position 1
+values.new(90 : 0);   // Insert 90 at position 0
+values.delete(5 : any); // Delete 5 from any position
+
+new fruits as collection: {
+    "apple": 1,
+    "banana": 2,
+    "kiwi": 3
+};
+write(fruits["apple"]); // Access by key
+write(fruits[3]);       // Access by position</code></pre>
+            <pre><code class="language-poly">// Decorators and Custom Methods
+@logExecution
+public function calculate(param: int) {
+    return param * 2;
+}
+
+new method States(){
+    hoverState(apply): {
+        gui.cursor.onSelObject();
+    } -> {
+        self.color.darken(+5);
+    }
+    
+    clickState(apply): {
+        gui.cursor.onSelObject(isClicked);
+    } -> {
+        continue;
+    }
+}</code></pre>
+            <pre><code class="language-poly">// Fragments - Composition over Inheritance
+fragment UserProfile {
+    username: string;
+    email: string;
+    
+    function displayProfile() {
+        write("User:", username, "Email:", email);
+    }
+}
+
+fragment UserSettings {
+    theme: string;
+    notifications: boolean;
+}
+
+// Compose fragments
+new UserFullProfile as fragment {
+    !Append UserProfile;
+    !Append UserSettings;
+    
+    function displayFullProfile() {
+        self.displayProfile();
+        self.displaySettings();
+    }
+}</code></pre>
+            <pre><code class="language-poly">// Pattern Matching & Control Flow
+match userInput {
+    when 1: write("Option One");
+    when int n if n > 5: write("Greater than five:", n);
+    when string s if s.length > 0: write("Non-empty string:", s);
+    else: write("Unknown input");
+}
+
+// Modern Operators
+new username = inputName ~> "Guest";  // Elvis operator
+new result = (score > 50) |> "Pass" : "Fail";  // Ternary</code></pre>
+            <pre><code class="language-poly">// Async & Threading
+async function fetchUserData(userId: int): object {
+    new userData as object = await apiCall("/users/" + userId);
+    await sleep(100); // Non-blocking delay
+    return userData;
+}
+
+threadTask !realTime: function processData() {
+    new users as array = await fetchUserData(123);
+    write("Processing complete:", users.length, "users");
+}</code></pre>
+            <pre><code class="language-poly">// Error Handling with Context
+try {
+    new score as int = read.in("Enter score: ");
+    if (score < 0) throw new RangeError("Score cannot be negative.");
+    if (score > 100) Error.Raise("Invalid range.", 400, "SCORE_ERR");
+} catch (err -> e) {
+    write("Validation failed:", e.message);
+} finally {
+    write("Score validation complete.");
+}</code></pre>
+        </section>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src='../js/poly.js'></script>
+    <script src='../js/theme.js'></script>
+</body>
+
+</html>

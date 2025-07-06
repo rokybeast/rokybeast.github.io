@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>rokybeast | Tools</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+  <style>body{font-family:'Space Grotesk',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif}.sort-btn{background:0 0;border:none;padding:0;color:#6c757d}.sort-btn:hover{color:#0d6efd}</style>
+</head>
+<body class="bg-light">
+  <div class="container py-5">
+    <div class="row mb-4">
+      <div class="col-md-4 mb-3">
+        <div class="dropdown">
+          <button class="btn btn-light dropdown-toggle w-100 border text-start" type="button" id="sortDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class='bx bx-sort'></i> Sort by: Name (A-Z)
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="sortDropdown">
+            <li><a class="dropdown-item" href="#" onclick="sortTable('name', 'asc')"><i class='bx bx-sort-up'></i> Name (A-Z)</a></li>
+            <li><a class="dropdown-item" href="#" onclick="sortTable('name', 'desc')"><i class='bx bx-sort-down'></i> Name (Z-A)</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#" onclick="sortTable('description', 'asc')"><i class='bx bx-sort-up'></i> Description (A-Z)</a></li>
+            <li><a class="dropdown-item" href="#" onclick="sortTable('description', 'desc')"><i class='bx bx-sort-down'></i> Description (Z-A)</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-4 mb-3">
+        <div class="dropdown">
+          <button class="btn btn-light dropdown-toggle w-100 border text-start" type="button" id="categoryDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class='bx bx-filter'></i> Category: All Categories
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="categoryDropdown" id="categoryDropdownMenu">
+            <li><a class="dropdown-item active" href="#" onclick="filterByCategory('all')"><i class='bx bx-grid'></i> All Categories</a></li>
+            <!-- Categories will be dynamically populated -->
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-4 mb-3">
+        <div class="input-group">
+          <span class="input-group-text bg-white">
+            <i class='bx bx-search'></i>
+          </span>
+          <input type="text" class="form-control" id="searchInput" placeholder="Search tools by name or description..." onkeyup="applyFilters()">
+        </div>
+      </div>
+    </div>
+    <div id="activeFilters" class="p-3 mb-4 rounded-3 bg-body-tertiary" style="display: none;">
+      <div class="d-flex flex-wrap align-items-center">
+        <span class="me-2 fw-bold">Active Filters:</span>
+        <span id="categoryFilter" class="badge text-white d-inline-flex align-items-center py-2 px-3 rounded-pill me-2 mb-2" style="display: none;">
+          <i class='bx bx-category'></i>
+          <span id="categoryFilterText"></span>
+          <button type="button" class="btn-close ms-2" aria-label="Close" onclick="filterByCategory('all')" style="font-size: 0.7em;"></button>
+        </span>
+        <span id="searchFilter" class="badge bg-info text-dark d-inline-flex align-items-center py-2 px-3 rounded-pill me-2 mb-2" style="display: none;">
+          <i class='bx bx-search'></i>
+          <span id="searchFilterText"></span>
+          <button type="button" class="btn-close ms-2" aria-label="Close" onclick="clearSearch()" style="font-size: 0.7em;"></button>
+        </span>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-hover table-striped" id="toolsTable">
+        <thead>
+          <tr class="bg-primary-subtle">
+            <th scope="col">
+              <div class="d-flex align-items-center">
+                <span>Name</span>
+                <div class="d-flex flex-column ms-2">
+                  <button class="sort-btn" onclick="sortTable('name', 'asc')" title="Sort A-Z">
+                    <i class='bx bx-up-arrow-alt'></i>
+                  </button>
+                  <button class="sort-btn" onclick="sortTable('name', 'desc')" title="Sort Z-A">
+                    <i class='bx bx-down-arrow-alt'></i>
+                  </button>
+                </div>
+              </div>
+            </th>
+            <th scope="col">
+              <div class="d-flex align-items-center">
+                <span>Description</span>
+                <div class="d-flex flex-column ms-2">
+                  <button class="sort-btn" onclick="sortTable('description', 'asc')" title="Sort A-Z">
+                    <i class='bx bx-up-arrow-alt'></i>
+                  </button>
+                  <button class="sort-btn" onclick="sortTable('description', 'desc')" title="Sort Z-A">
+                    <i class='bx bx-down-arrow-alt'></i>
+                  </button>
+                </div>
+              </div>
+            </th>
+            <th scope="col">Category</th>
+            <th scope="col">Link</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+          <tr data-category="VBA Tools" data-color="#6f42c1">
+            <td><i class='bx bx-lock-open me-2'></i> VBA Unlocker</td>
+            <td>Unlock VBA password protected files with detailed logs</td>
+            <td><span class="badge text-white rounded-1 p-1 px-2" style="background-color: #6f42c1;">VBA Tools</span></td>
+            <td><a href="/tools/vba/vbunlock/" class="btn btn-outline-primary btn-sm">Go to VBUnlock</a></td>
+          </tr>
+          <tr data-category="VBA Tools" data-color="#6f42c1">
+            <td><i class='bx bx-palette me-2'></i> OLE Colors</td>
+            <td>Office uses OLE, whereas we use RGB/HEX, Convert them here</td>
+            <td><span class="badge text-white rounded-1 p-1 px-2" style="background-color: #6f42c1;">VBA Tools</span></td>
+            <td><a href="/tools/vba/ole-tool/" class="btn btn-outline-primary btn-sm">Go to OLE Colors</a></td>
+          </tr>
+		  <tr data-category="Programming" data-color="#6f42c1">
+            <td><i class='bx bx-lock-open me-2'></i> The Hello World Project</td>
+            <td>"Hello, World" In almost every programming language.</td>
+            <td><span class="badge text-white rounded-1 p-1 px-2" style="background-color: #6f42c1;">Programming</span></td>
+            <td><a href="/tools/programming/helloworld/" class="btn btn-outline-primary btn-sm">Go to VBUnlock</a></td>
+          </tr>
+          <tr data-category="Graphics" data-color="#20c997">
+            <td><i class='bx bx-text me-2'></i> Text to SVG</td>
+            <td>Make cool text stuff, and turn then into PNGs/SVGs</td>
+            <td><span class="badge text-white rounded-1 p-1 px-2" style="background-color: #20c997;">Graphics</span></td>
+            <td><a href="/tools/other/text-to-svg/" class="btn btn-outline-primary btn-sm">Go to Text to SVG</a></td>
+          </tr>
+          <tr data-category="Windows" data-color="#0078D4">
+            <td><i class='bx bx-file me-2'></i> DLL Viewer</td>
+            <td>Look into functions of any DLL/EXE (very useful, I know)</td>
+            <td><span class="badge text-white rounded-1 p-1 px-2" style="background-color: #0078D4;">Windows</span></td>
+            <td><a href="/tools/other/dllviewer/" class="btn btn-outline-primary btn-sm">Go to DLL Viewer</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="noResults" class="alert alert-warning text-center d-none py-3" role="alert">
+      <i class='bx bx-error-circle me-2'></i> No tools found matching your search criteria. Try changing your filters.
+    </div>
+  </div>
+</body>
+</html>

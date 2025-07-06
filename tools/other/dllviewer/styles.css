@@ -1,0 +1,37 @@
+body {
+	background-color: #f8f9fa;
+	color: #212529;
+}
+
+.hex-value {
+	font-family: 'JetBrains Mono', monospace;
+	font-size: 0.9em;
+	background-color: #e9ecef;
+	padding: 2px 4px;
+	border-radius: 3px;
+}
+
+.error-message {
+	color: #dc3545;
+}
+
+.success-message {
+	color: #198754;
+}
+
+.drop-zone {
+	border: 2px solid #007bff;
+	border-radius: 5px;
+	padding: 30px;
+	text-align: center;
+	margin: 30px 0;
+	transition: background-color 0.3s;
+}
+
+.drop-zone.hover {
+	background-color: #e9ecef;
+}
+
+.file-input-container {
+	margin-bottom: 25px;
+}
