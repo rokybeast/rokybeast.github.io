@@ -45,6 +45,21 @@ document.addEventListener("DOMContentLoaded", () => {
       srcDark: "https://cdn.simpleicons.org/react",
     },
     {
+      name: "Svelte",
+      srcLight: "https://cdn.simpleicons.org/svelte",
+      srcDark: "https://cdn.simpleicons.org/svelte",
+    },
+    {
+      name: "TypeScript",
+      srcLight: "https://cdn.simpleicons.org/typescript",
+      srcDark: "https://cdn.simpleicons.org/typescript",
+    },
+    {
+      name: "Selenium",
+      srcLight: "https://cdn.simpleicons.org/selenium",
+      srcDark: "https://cdn.simpleicons.org/selenium",
+    },
+    {
       name: "Next.js",
       srcLight: "https://cdn.simpleicons.org/nextdotjs/000",
       srcDark: "https://cdn.simpleicons.org/nextdotjs/fff",
@@ -100,11 +115,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     for (let j = 0; j < 2; j++) {
       toolData.forEach((tool) => {
+        const container = document.createElement("div");
+        container.classList.add("tool-logo-container");
+
         const img = document.createElement("img");
         img.src = theme === "dark" ? tool.srcDark : tool.srcLight;
         img.alt = tool.name;
         img.classList.add("tool-logo");
-        fragment.appendChild(img);
+
+        const tooltip = document.createElement("span");
+        tooltip.classList.add("tool-tooltip");
+        tooltip.textContent = tool.name;
+
+        container.appendChild(img);
+        container.appendChild(tooltip);
+        fragment.appendChild(container);
       });
     }
     marquee.appendChild(fragment);
