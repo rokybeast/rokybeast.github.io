@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>FLAMES</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap"
+            rel="stylesheet"
+        />
+
+        <style>
+            body {
+                font-family: "Inter", sans-serif;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+
+            .fire-text {
+                background: linear-gradient(90deg, #ff8008, #ff4500);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                color: transparent;
+            }
+
+            @keyframes glow {
+                0%,
+                100% {
+                    text-shadow: 0 0 5px #ffc837, 0 0 10px #ff8008;
+                }
+                50% {
+                    text-shadow: 0 0 10px #ffc837, 0 0 20px #ff8008;
+                }
+            }
+            .glow-animation {
+                animation: glow 2s ease-in-out infinite;
+            }
+
+            .slanted-strike {
+                position: relative;
+                display: inline-block;
+            }
+            .slanted-strike::after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: -10%;
+                width: 0;
+                height: 3px;
+                background-color: currentColor;
+                transform: rotate(-15deg);
+                border-radius: 2px;
+                animation: draw-strike 0.4s ease-out forwards;
+            }
+
+            @keyframes draw-strike {
+                from {
+                    width: 0;
+                }
+                to {
+                    width: 120%;
+                }
+            }
+        </style>
+    </head>
+    <body
+        class="bg-slate-100 text-slate-800 flex items-center justify-center min-h-screen p-4"
+    >
+        <div class="w-full max-w-2xl mx-auto text-center">
+            <h1
+                class="text-6xl md:text-8xl font-black uppercase mb-6 fire-text"
+            >
+                FLAMES
+            </h1>
+            <p class="text-slate-500 mb-8">
+                Find out the relationship status between two people.
+            </p>
+
+            <div id="inputArea" class="space-y-4 max-w-md mx-auto">
+                <input
+                    type="text"
+                    id="name1"
+                    placeholder="First Name"
+                    class="w-full bg-white border-2 border-slate-300 rounded-lg px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all duration-300"
+                />
+                <input
+                    type="text"
+                    id="name2"
+                    placeholder="Second Name"
+                    class="w-full bg-white border-2 border-slate-300 rounded-lg px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all duration-300"
+                />
+                <button
+                    class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-4 rounded-lg text-lg uppercase shadow-lg shadow-orange-500/20 hover:shadow-orange-600/40 transform hover:scale-105 transition-all duration-300"
+                    onclick="startGame()"
+                >
+                    Calculate
+                </button>
+            </div>
+
+            <div
+                id="messageBox"
+                class="hidden mt-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg max-w-md mx-auto"
+            >
+                <p id="messageText"></p>
+            </div>
+
+            <div id="gameArea" class="hidden mt-10">
+                <div
+                    id="processDisplay"
+                    class="process-display mb-8 p-4 bg-slate-200/60 rounded-lg text-left text-sm text-slate-600 font-mono hidden"
+                ></div>
+                <div
+                    class="flex justify-center items-center space-x-2 md:space-x-4 mb-8"
+                    id="flamesContainer"
+                >
+                    <div class="p-2 md:p-4">
+                        <span
+                            class="text-5xl md:text-7xl font-bold transition-all duration-500"
+                            data-letter="F"
+                            >F</span
+                        >
+                    </div>
+                    <div class="p-2 md:p-4">
+                        <span
+                            class="text-5xl md:text-7xl font-bold transition-all duration-500"
+                            data-letter="L"
+                            >L</span
+                        >
+                    </div>
+                    <div class="p-2 md:p-4">
+                        <span
+                            class="text-5xl md:text-7xl font-bold transition-all duration-500"
+                            data-letter="A"
+                            >A</span
+                        >
+                    </div>
+                    <div class="p-2 md:p-4">
+                        <span
+                            class="text-5xl md:text-7xl font-bold transition-all duration-500"
+                            data-letter="M"
+                            >M</span
+                        >
+                    </div>
+                    <div class="p-2 md:p-4">
+                        <span
+                            class="text-5xl md:text-7xl font-bold transition-all duration-500"
+                            data-letter="E"
+                            >E</span
+                        >
+                    </div>
+                    <div class="p-2 md:p-4">
+                        <span
+                            class="text-5xl md:text-7xl font-bold transition-all duration-500"
+                            data-letter="S"
+                            >S</span
+                        >
+                    </div>
+                </div>
+
+                <div id="resultDisplay" class="hidden mb-6 min-h-[80px]">
+                    <p
+                        id="resultText"
+                        class="text-2xl md:text-4xl font-bold"
+                    ></p>
+                </div>
+
+                <button
+                    class="bg-slate-300 hover:bg-slate-400 text-slate-800 font-bold py-2 px-6 rounded-lg transform hover:scale-105 transition-all duration-300"
+                    onclick="resetGame()"
+                >
+                    Play Again
+                </button>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>
