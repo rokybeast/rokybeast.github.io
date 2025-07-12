@@ -1,0 +1,102 @@
+[
+    {
+        "language": "JavaScript",
+        "prism_lang": "javascript",
+        "code": "console.log('Hello, World!');"
+    },
+    {
+        "language": "Python",
+        "prism_lang": "python",
+        "code": "print('Hello, World!')"
+    },
+    {
+        "language": "HTML",
+        "prism_lang": "html",
+        "code": "<!DOCTYPE html>\n<html>\n<head>\n  <title>Hello World</title>\n</head>\n<body>\n  <p>Hello, World!</p>\n</body>\n</html>"
+    },
+    {
+        "language": "C",
+        "prism_lang": "c",
+        "code": "#include <stdio.h>\n\nint main() {\n    printf(\"Hello, World!\n\");\n    return 0;\n}"
+    },
+    {
+        "language": "Java",
+        "prism_lang": "java",
+        "code": "public class HelloWorld {\n    public static void main(String[] args) {\n        System.out.println(\"Hello, World!\");\n    }\n}"
+    },
+    {
+        "language": "Go",
+        "prism_lang": "go",
+        "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    fmt.Println(\"Hello, World!\")\n}"
+    },
+    {
+        "language": "Rust",
+        "prism_lang": "rust",
+        "code": "fn main() {\n    println!(\"Hello, World!\");\n}"
+    },
+    {
+        "language": "SQL",
+        "prism_lang": "sql",
+        "code": "SELECT 'Hello, World!';"
+    },
+	{
+        "language": "Brainf*ck",
+        "prism_lang": "null",
+        "code": "++++++++++[>+++++++>++++++++++>+++<<<-]>++.>+.+++++++\n..+++.>++.<<+++++++++++++++.>.+++.------.--------.>+."
+    },
+	{
+        "language": "Hex",
+        "prism_lang": "null",
+        "code": "48 65 6C 6C 6F 2C 20 57 6F 72 6C 64 21"
+    },
+	{
+        "language": "Poly",
+        "prism_lang": "javascript",
+        "code": "write(\"Hello, World!\");"
+    },
+    {
+        "language": "μλ",
+        "prism_lang": "null",
+        "code": ">  EEEEEEEΔΔΘς       v\nv  ςΘΔEEEEEEEEEE     <\n>  EEEEEEEEEEEδδΘς   v\nv  ΘδδEEEEEEEEEEEς   <\n>  ς EEEEEEEEEEEΔΘ   v\nv  ΘΔΔΔΔEEEEς        <\n>  ςEEEΔΔΘ           v\nv  ΘδEEEEEEEEEEEEς   <\n>  ςEEEEEEEEEEEΔΘ    v\nv  ΘΔΔΔΔEEEEEEEEEEEς <\n>  ςEEEEEEEEEEEδδΘ   v\n>  ςEEEΔΔΔΘ          λ\n"
+    },
+	{
+        "language": "Vatical",
+        "prism_lang": "null",
+        "code": "LITURGY:\n    PRAY \"Hello World!\"\nAMEN."
+    },
+	{
+        "language": "Befunge",
+        "prism_lang": "null",
+        "code": "dlroW olleH\",,,,,,,,,,,@"
+    },
+	{ 
+		"language": "COBOL",
+		"prism_lang": "cobol",
+		"code": "IDENTIFICATION DIVISION.\nPROGRAM-ID. HELLOWORLD.\nPROCEDURE DIVISION.\nDISPLAY \"Hello, World!\".\nSTOP RUN."
+	},
+	{
+	"language": "Assembly",
+	"prism_lang": "assembly",
+	"code": "section .data\n    msg db \"Hello, World!\", 0xA\n    len equ $ - msg\n\nsection .text\n    global _start\n\n_start:\n    mov eax, 4\n    mov ebx, 1\n    mov ecx, msg\n    mov edx, len\n    int 0x80\n\n    mov eax, 1\n    xor ebx, ebx\n    int 0x80"
+	},
+	{
+	"language": "Haskell",
+	"prism_lang": "haskell",
+	"code": "main = putStrLn \"Hello, World!\""
+	},
+	{
+	"language": "Lua",
+	"prism_lang": "lua",
+	"code": "print(\"Hello, World!\")"
+	},
+	{
+	"language": "Scala",
+	"prism_lang": "scala",
+	"code": "object HelloWorld extends App {\n  println(\"Hello, World!\")\n}"
+	},
+	{
+	"language": "Ruby",
+	"prism_lang": "ruby",
+	"code": "puts \"Hello, World!\""
+	}
+]
