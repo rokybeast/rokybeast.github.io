@@ -1,0 +1,111 @@
+#projects {
+    text-align: center;
+    background-color: var(--card-bg);
+    @include transition(background-color $transition-medium ease);
+}
+
+.project-card {
+    background-color: transparent;
+    border-radius: $radius-medium;
+    box-shadow: 0 8px 32px 0 var(--shadow-color);
+}
+
+.slideshow-container {
+    max-width: 800px;
+    position: relative;
+    margin: auto;
+    border-radius: $radius-medium;
+    overflow: hidden;
+    box-shadow: 0 10px 20px var(--shadow-color);
+}
+
+.slide {
+    display: none;
+    border-radius: $radius-medium;
+
+    img {
+        vertical-align: middle;
+        border-radius: $radius-medium;
+    }
+}
+
+.slide-caption {
+    font-family: var(--font-heading);
+    text-align: center;
+    padding: 6px 16px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 5px;
+    margin-top: -22px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 10px;
+    @include transition(0.3s ease);
+    border-radius: 0 $radius-small $radius-small 0;
+    user-select: none;
+    background-color: rgba(0, 0, 0, 0.3);
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+}
+
+.next {
+    right: 0;
+    border-radius: $radius-small 0 0 $radius-small;
+}
+
+.prev {
+    left: 0;
+    border-radius: $radius-small 0 0 $radius-small;
+}
+
+.dot {
+    cursor: pointer;
+    height: 5px;
+    width: 5px;
+    margin: 0 5px;
+    background-color: var(--text-color);
+    border-radius: $radius-round;
+    display: inline-block;
+    @include transition(background-color 0.3s ease);
+
+    &:hover,
+    &.active {
+        background-color: $grey-900;
+    }
+}
+
+body[data-theme="dark"] .dot {
+    background-color: $grey-300;
+}
+
+body[data-theme="light"] .dot {
+    background-color: $grey-800;
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+.project-buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+

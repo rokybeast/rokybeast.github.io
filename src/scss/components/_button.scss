@@ -1,0 +1,49 @@
+.button-container {
+    position: relative;
+
+    &:hover {
+        .button {
+            transform: translate($hover-shift, $hover-shift);
+        }
+
+        .button-shadow {
+            transform: translate(calc(-1 * #{$hover-shift}), calc(-1 * #{$hover-shift}));
+        }
+    }
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.8rem 1.8rem;
+    background-color: var(--accent-color);
+    color: #fff;
+    text-decoration: none;
+    border-radius: $radius-medium;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    border: none;
+    cursor: pointer;
+    @include transition(transform $transition-fast ease, background-color $transition-fast ease);
+    position: relative;
+    z-index: 1;
+}
+
+.button-shadow {
+    content: "";
+    position: absolute;
+    top: $shadow-offset;
+    left: $shadow-offset;
+    width: 100%;
+    height: 100%;
+    background-color: var(--button-shadow-color);
+    border-radius: $radius-medium;
+    z-index: 0;
+    @include transition(transform $transition-medium cubic-bezier(0.25, 0.46, 0.45, 0.94));
+}
+
+body[data-theme="dark"] .button-container:hover .button {
+    background-color: var(--accent-color);
+}
+

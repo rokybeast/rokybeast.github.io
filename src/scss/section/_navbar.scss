@@ -1,0 +1,104 @@
+#navbar {
+    list-style: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--navbar-bg);
+    z-index: 1000;
+    @include transition(background-color $transition-medium ease, box-shadow $transition-medium ease);
+    background: linear-gradient(120deg, var(--navbar-bg) 60%, rgba(255, 255, 255, 0.12) 100%);
+    box-shadow: 0 8px 32px 0 rgba(33, 33, 33, 0.18);
+    border-bottom: 1.5px solid rgba(255, 255, 255, 0.25);
+    @include backdrop-blur;
+    top: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-logo {
+    a {
+        font-family: var(--font-logo);
+        font-size: 2rem;
+        color: var(--accent-color);
+        text-decoration: none;
+        @include transition(color $transition-fast ease);
+
+        &:hover {
+            color: var(--text-color);
+        }
+    }
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+
+    li {
+        margin-left: 1rem;
+    }
+
+    a {
+        text-decoration: none;
+        color: var(--text-color);
+        font-family: var(--font-heading);
+        font-weight: 500;
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+        position: relative;
+        @include transition(color $transition-medium ease, background-color $transition-medium ease);
+        border-radius: $radius-medium;
+        z-index: 1;
+
+        &::after {
+            content: none;
+        }
+
+        &.active {
+            background-color: transparent;
+            color: $grey-500;
+            font-weight: 600;
+
+            &::after {
+                width: 100%;
+            }
+
+            &:hover {
+                color: $grey-700;
+            }
+        }
+
+        &:hover {
+            color: var(--accent-color);
+
+            &::after {
+                width: 100%;
+            }
+        }
+    }
+}
+
+body[data-theme="light"] .nav-links a.active {
+    color: var(--primary-color-dark-300);
+}
+
+.theme-switcher {
+    i {
+        font-size: 1.5rem;
+        color: var(--text-color);
+        cursor: pointer;
+        @include transition(color $transition-fast ease, transform $transition-fast ease);
+
+        &:hover {
+            color: var(--accent-color);
+            transform: rotate(15deg) scale(1.1);
+        }
+    }
+}
+

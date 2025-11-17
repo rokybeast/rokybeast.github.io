@@ -1,0 +1,71 @@
+.alert-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #0038d1;
+    color: white;
+    font-family: $font-heading, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.4;
+    z-index: 9999;
+    transform: translateY(0);
+    @include transition(transform 0.3s cubic-bezier(0.4, 0, 0.2, 1));
+    box-shadow: 0 2px 4px rgba(0, 56, 209, 0.2);
+
+    .alert-link {
+        text-decoration: none;
+        color: #fff;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &.closing {
+        transform: translateY(-100%);
+    }
+}
+
+.alert-bar-content {
+    @include flex-center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 1rem;
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.alert-bar-message {
+    flex: 1;
+    text-align: center;
+}
+
+.alert-bar-close {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 4px;
+    @include flex-center;
+    border-radius: $radius-round;
+    @include transition(all $transition-fast ease);
+    flex-shrink: 0;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+
+    i {
+        font-size: 18px;
+        line-height: 1;
+    }
+}
+

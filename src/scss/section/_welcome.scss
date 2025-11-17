@@ -1,0 +1,38 @@
+#welcome {
+    background-color: transparent;
+
+    p {
+        font-size: 1.2rem;
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.8;
+    }
+}
+
+.welcome-content {
+    z-index: 10;
+
+    .logo-text {
+        font-size: 6rem;
+    }
+}
+
+.logo-text {
+    font-family: var(--font-logo);
+    font-size: 10rem;
+    color: var(--accent-color);
+    display: block;
+    margin-bottom: 1rem;
+    @include transition(color $transition-medium ease);
+    animation: floatText 5s ease-in-out infinite;
+}
+
+@keyframes floatText {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
