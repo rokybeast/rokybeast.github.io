@@ -10,7 +10,10 @@
       img: "https://placehold.co/800x400/383838/FFFFFF?text=Project+2",
       caption: "Poly",
     },
-    { img: "/assets/img/ProjectMountain.png", caption: "Project: Mountain" },
+    {
+      img: "https://placehold.co/800x400/383838/FFFFFF?text=Project+3",
+      caption: "Project: Mountain",
+    },
   ];
   const projectDescriptions = [
     "RippleKit (archived)",

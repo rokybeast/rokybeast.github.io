@@ -1,17 +1,131 @@
 ---
-
+import AlertBar from "../components/AlertBar.svelte";
+import Navbar from "../components/Navbar.svelte";
+import SpotifyWidget from "../components/SpotifyWidget.svelte";
+import ProjectsSlideshow from "../components/ProjectsSlideshow.svelte";
+import ToolsMarquee from "../components/ToolsMarquee.svelte";
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon_dark.png" />
-		<meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <link rel="stylesheet" type="text/css" href="../../css/styles.css" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>rokybeast</title>
-	</head>
-	<body>
-		<h1>rokybeast's very amazing website (yes)</h1>
-	</body>
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet" />
+    <meta name="description" content="[rokybeast] Personal Portfolio." />
+    <meta name="author" content="RokyBeast" />
+    <meta name="robots" content="index, follow" />
+    <link id="favicon_dark" rel="icon" href="/assets/favicon/favicon_dark.png" type="image/x-icon" />
+  </head>
+
+  <body data-theme="light" class="alert-bar-active">
+    <div class="grid-background"></div>
+
+    <AlertBar client:load />
+    <Navbar client:load />
+
+    <section id="welcome" class="full-screen-section">
+      <div class="welcome-content">
+        <span class="logo-text">[rokybeast]</span>
+        <p style="font-weight: 100;">Hi! I'm RokyBeast, your average developer, who knows stuff. Most content here is filler, for now :)</p>
+      </div>
+    </section>
+
+    <SpotifyWidget client:load />
+
+    <section id="about-me">
+      <h2>About Me</h2>
+        <div class="about-me-content" style="font-weight: 100;">
+        <p>hello there! this is rokybeast. i like to do stuff.</p>
+        <p>yes, I did write this website from scratch, and <b>NO</b> i did NOT use WIX. pure Astro + Svelte Work here.</p>
+        <p>i work with 'C&EH and RE&DCF', that is, cryptography, ethical hacking, reverse engineering and computer forensics. Yes, i am not a femboy, and a sane person who uses arch w/ hyprland 🥀️</p>
+      </div>
+    </section>
+
+    <section id="my-tools">
+      <h2>My Tools</h2>
+      <div class="tools-circles-container"></div>
+      <ToolsMarquee client:load />
+    </section>
+
+    <section id="projects">
+      <h2>My Projects</h2>
+      <ProjectsSlideshow client:load />
+      <div style="text-align: center; margin-top: 15px; font-weight: 100;">
+        <!-- dots are inside the slideshow component -->
+      </div>
+      <p id="project-desc" style="text-align: center; margin: 1.5rem 0 0 0; font-size: 1.1rem; font-weight: 100;">RippleKit, is a CSS Framework with custom Elements.</p>
+      <br />
+      <center>
+        <p style="margin-bottom: 20px; font-weight: 100;">Each of these projects have been developed with love (and many errors).</p>
+      </center>
+      <div class="project-buttons-container">
+        <div class="button-container">
+          <a href="https://github.com/rokybeast" target="_blank" class="button"><b>@rokybeast</b> on GitHub <i class="bx bxl-github"></i></a>
+          <div class="button-shadow"></div>
+        </div>
+        <div class="button-container">
+          <a href="/tools/" target="_blank" class="button">Online Tools <i class="bx bx-link-external"></i></a>
+          <div class="button-shadow"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="roadmap">
+      <h2>My Roadmap</h2>
+      <div class="roadmap-container">
+        <div class="roadmap-section">
+          <h3>Completed</h3>
+          <div class="roadmap-list" style="font-weight: 100;">
+            <div class="roadmap-item">
+              <h4>IOEngine</h4>
+              <p>An Input and Output Engine for VBA (idk why)</p>
+              <a href="https://github.com/rokybeast/IOEngine" class="item-link" target="_blank">IOEngine <i class="bx bx-link-external"></i></a>
+            </div>
+            <div class="roadmap-item">
+              <h4>ColorEngine</h4>
+              <p>OLE Colors to RGB or smth, with a native Win32 API Color Picker for VBA</p>
+              <a href="https://github.com/rokybeast/ColorEngine" class="item-link" target="_blank">ColorEngine <i class="bx bx-link-external"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="roadmap-section">
+          <h3>In Progress</h3>
+          <div class="roadmap-list" style="font-weight: 100;">
+            <div class="roadmap-item">
+              <h4>Poly/PolyScript</h4>
+              <p>A Better programming language that Mr. JavaScript I guess</p>
+              <a href="/poly" class="item-link" target="_blank">Poly <i class="bx bx-link-external"></i></a>
+            </div>
+            <div class="roadmap-item">
+              <h4>[datalab]</h4>
+              <p>cyberchef clone.. but maybe worse</p>
+              <a href="https://github.com/rokybeast/datalab/" class="item-link" target="_blank">datalab <i class="bx bx-link-external"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer id="footer">
+      <div class="footer-links" style="font-weight: 100;">
+        <a href="https://github.com/rokybeast" target="_blank" aria-label="GitHub Profile"><i class="bx bxl-github"></i></a>
+        <a href="https://x.com/RokyBeast_" target="_blank" aria-label="Twitter Profile"><i class="bx bxl-twitter"></i></a>
+        <a href="mailto:sajid.shaik1186@gmail.com" target="_blank" aria-label="Email"><i class="bx bx-at"></i></a>
+        <a href="https://discordapp.com/users/r0kyb3ast" target="_blank" aria-label="Discord"><i class="bx bxl-discord-alt"></i></a>
+        <a href="https://open.spotify.com/user/ss1haigqtrb89qyvxj2iajclo" target="_blank" aria-label="Spotify"><i class="bx bxl-spotify"></i></a>
+        <a href="https://github.com/rokybeast/rokybeast.github.io" target="_blank" aria-label="View Source Code"><i class="bx bx-link-external"></i></a>
+      </div>
+      <p class="copyright">© RokyBeast 2025-26</p>
+    </footer>
+
+    <button id="to-top-btn" class="contact-button to-top-btn" title="Back to Top">
+      <i class="bx bx-arrow-to-top"></i>
+    </button>
+  </body>
 </html>
