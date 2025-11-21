@@ -1,6 +1,6 @@
 # build output
 dist/
-css/
+css/*.map
 # generated types
 .astro/
 

@@ -6,7 +6,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "build:scss": "npx sass src/scss/styles.scss css/styles.css --style=compressed"
   },
   "dependencies": {
     "@astrojs/svelte": "^7.2.2",
