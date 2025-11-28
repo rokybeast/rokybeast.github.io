@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar.svelte";
 import SpotifyWidget from "../components/SpotifyWidget.svelte";
 import ProjectsSlideshow from "../components/ProjectsSlideshow.svelte";
 import ToolsMarquee from "../components/ToolsMarquee.svelte";
+import ToTopButton from "../components/ToTopButton.svelte";
 ---
 
 <html lang="en">
@@ -124,8 +125,6 @@ import ToolsMarquee from "../components/ToolsMarquee.svelte";
       <p class="copyright">© RokyBeast 2025-26</p>
     </footer>
 
-    <button id="to-top-btn" class="contact-button to-top-btn" title="Back to Top">
-      <i class="bx bx-arrow-to-top"></i>
-    </button>
+    <ToTopButton client:load />
   </body>
 </html>
