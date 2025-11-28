@@ -7,11 +7,7 @@
     { name: "CSS", src: "https://cdn.simpleicons.org/css" },
     { name: "SCSS", src: "https://cdn.simpleicons.org/sass" },
     { name: "JavaScript", src: "https://cdn.simpleicons.org/javascript" },
-    {
-      name: "VBA",
-      src: "https://api.iconify.design/simple-icons/visualbasic.svg?color=%232B579A",
-    },
-    { name: "Poly", src: "../poly/assets/poly_svg_mod.svg" },
+    { name: "VBA", src: "https://api.iconify.design/simple-icons/visualbasic.svg?color=%232B579A" },
     { name: "PHP", src: "https://cdn.simpleicons.org/php" },
     { name: "Svelte", src: "https://cdn.simpleicons.org/svelte" },
     { name: "TypeScript", src: "https://cdn.simpleicons.org/typescript" },
