@@ -17,8 +17,8 @@
   ];
   const projectDescriptions = [
     "RippleKit (archived)",
-    "Poly (archived).",
-    "Project: Mountain (archived).",
+    "Poly (archived)",
+    "Project: Mountain (archived)",
   ];
 
   function next(n) {
@@ -43,7 +43,6 @@
   {#each slides as slide, i}
     <div class="slide" style="display: {i === current ? 'block' : 'none'};">
       <img src={slide.img} style="width: 100%" alt={slide.caption} />
-      <div class="slide-caption">{slide.caption}</div>
     </div>
   {/each}
 
