@@ -781,14 +781,14 @@ h2 {
 }
 
 .tool-logo {
-  filter: grayscale(100%);
+  /* filter: grayscale(100%); */
   opacity: 0.5;
   height: 50px;
   margin: 0 2rem;
   @include transition(filter $transition-fast ease, opacity $transition-fast ease, transform $transition-fast ease);
 
   &:hover {
-    filter: grayscale(0%);
+    /* filter: grayscale(0%); */
     opacity: 1;
     transform: scale(1.1);
   }
@@ -917,7 +917,7 @@ body[data-theme="dark"] .logo-light {
   position: relative;
   margin: auto;
   border-radius: $radius-medium;
-  overflow: hidden;
+  // overflow: hidden;
   box-shadow: 0 10px 20px var(--shadow-color);
 }
 
